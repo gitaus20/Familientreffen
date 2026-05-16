@@ -94,6 +94,17 @@ h1 span { color: var(--accent); }
 .site-footer { border-top: 1px solid var(--border); padding: 1.5rem; text-align: center; font-size: 0.78rem; color: var(--muted); }
 .site-footer a { color: var(--accent); text-decoration: none; }
 
+.anfahrt-area { padding: 1.1rem 1.75rem 1.25rem; border-top: 1px solid var(--border); }
+.anfahrt-label { font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); margin-bottom: 0.6rem; }
+.anfahrt-rows { display: flex; flex-direction: column; gap: 6px; }
+.anfahrt-row { display: flex; align-items: center; gap: 10px; }
+.anfahrt-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+.anfahrt-city { font-size: 0.8rem; color: var(--text); width: 72px; flex-shrink: 0; }
+.anfahrt-bar-wrap { flex: 1; background: var(--surface2); border-radius: 3px; height: 5px; overflow: hidden; }
+.anfahrt-bar { height: 100%; border-radius: 3px; }
+.anfahrt-km { font-size: 0.8rem; font-weight: 500; color: var(--text); width: 52px; text-align: right; flex-shrink: 0; }
+.anfahrt-time { font-size: 0.75rem; color: var(--muted); width: 58px; text-align: right; flex-shrink: 0; }
+
 @media (max-width: 600px) {
   .card-body { grid-template-columns: 1fr; }
   .card-header { flex-direction: column; }
@@ -226,6 +237,15 @@ h1 span { color: var(--accent); }
         <span class="tag red">Haustiere unklar</span>
       </div>
     </div>
+    <div class="anfahrt-area">
+      <div class="anfahrt-label">🚗 Anfahrt</div>
+      <div class="anfahrt-rows">
+        <div class="anfahrt-row"><div class="anfahrt-dot" style="background:#378ADD;"></div><div class="anfahrt-city">Duisburg</div><div class="anfahrt-bar-wrap"><div class="anfahrt-bar" style="width:39%; background:#378ADD;"></div></div><div class="anfahrt-km">195 km</div><div class="anfahrt-time">ca. 2:15 h</div></div>
+        <div class="anfahrt-row"><div class="anfahrt-dot" style="background:#1D9E75;"></div><div class="anfahrt-city">Marburg</div><div class="anfahrt-bar-wrap"><div class="anfahrt-bar" style="width:26%; background:#1D9E75;"></div></div><div class="anfahrt-km">130 km</div><div class="anfahrt-time">ca. 1:45 h</div></div>
+        <div class="anfahrt-row"><div class="anfahrt-dot" style="background:#D85A30;"></div><div class="anfahrt-city">Ettlingen</div><div class="anfahrt-bar-wrap"><div class="anfahrt-bar" style="width:54%; background:#D85A30;"></div></div><div class="anfahrt-km">270 km</div><div class="anfahrt-time">ca. 3:00 h</div></div>
+        <div class="anfahrt-row"><div class="anfahrt-dot" style="background:#BA7517;"></div><div class="anfahrt-city">Kaufbeuren</div><div class="anfahrt-bar-wrap"><div class="anfahrt-bar" style="width:100%; background:#BA7517;"></div></div><div class="anfahrt-km">500 km</div><div class="anfahrt-time">ca. 5:00 h</div></div>
+      </div>
+    </div>
   </div>
 
   <!-- UNTERKUNFT 2 -->
@@ -305,6 +325,15 @@ h1 span { color: var(--accent); }
         <span class="tag red">Handtücher selbst</span>
         <span class="tag red">Nicht an Mosel</span>
         <span class="tag neutral">Rauchen verboten</span>
+      </div>
+    </div>
+    <div class="anfahrt-area">
+      <div class="anfahrt-label">🚗 Anfahrt</div>
+      <div class="anfahrt-rows">
+        <div class="anfahrt-row"><div class="anfahrt-dot" style="background:#378ADD;"></div><div class="anfahrt-city">Duisburg</div><div class="anfahrt-bar-wrap"><div class="anfahrt-bar" style="width:42%; background:#378ADD;"></div></div><div class="anfahrt-km">220 km</div><div class="anfahrt-time">ca. 2:30 h</div></div>
+        <div class="anfahrt-row"><div class="anfahrt-dot" style="background:#1D9E75;"></div><div class="anfahrt-city">Marburg</div><div class="anfahrt-bar-wrap"><div class="anfahrt-bar" style="width:31%; background:#1D9E75;"></div></div><div class="anfahrt-km">165 km</div><div class="anfahrt-time">ca. 2:00 h</div></div>
+        <div class="anfahrt-row"><div class="anfahrt-dot" style="background:#D85A30;"></div><div class="anfahrt-city">Ettlingen</div><div class="anfahrt-bar-wrap"><div class="anfahrt-bar" style="width:45%; background:#D85A30;"></div></div><div class="anfahrt-km">240 km</div><div class="anfahrt-time">ca. 2:45 h</div></div>
+        <div class="anfahrt-row"><div class="anfahrt-dot" style="background:#BA7517;"></div><div class="anfahrt-city">Kaufbeuren</div><div class="anfahrt-bar-wrap"><div class="anfahrt-bar" style="width:100%; background:#BA7517;"></div></div><div class="anfahrt-km">530 km</div><div class="anfahrt-time">ca. 5:15 h</div></div>
       </div>
     </div>
   </div>
@@ -387,6 +416,15 @@ h1 span { color: var(--accent); }
         <span class="tag neutral">Ruhezeit ab 22 Uhr</span>
       </div>
     </div>
+    <div class="anfahrt-area">
+      <div class="anfahrt-label">🚗 Anfahrt</div>
+      <div class="anfahrt-rows">
+        <div class="anfahrt-row"><div class="anfahrt-dot" style="background:#378ADD;"></div><div class="anfahrt-city">Duisburg</div><div class="anfahrt-bar-wrap"><div class="anfahrt-bar" style="width:36%; background:#378ADD;"></div></div><div class="anfahrt-km">190 km</div><div class="anfahrt-time">ca. 2:00 h</div></div>
+        <div class="anfahrt-row"><div class="anfahrt-dot" style="background:#1D9E75;"></div><div class="anfahrt-city">Marburg</div><div class="anfahrt-bar-wrap"><div class="anfahrt-bar" style="width:24%; background:#1D9E75;"></div></div><div class="anfahrt-km">125 km</div><div class="anfahrt-time">ca. 1:30 h</div></div>
+        <div class="anfahrt-row"><div class="anfahrt-dot" style="background:#D85A30;"></div><div class="anfahrt-city">Ettlingen</div><div class="anfahrt-bar-wrap"><div class="anfahrt-bar" style="width:52%; background:#D85A30;"></div></div><div class="anfahrt-km">270 km</div><div class="anfahrt-time">ca. 2:45 h</div></div>
+        <div class="anfahrt-row"><div class="anfahrt-dot" style="background:#BA7517;"></div><div class="anfahrt-city">Kaufbeuren</div><div class="anfahrt-bar-wrap"><div class="anfahrt-bar" style="width:100%; background:#BA7517;"></div></div><div class="anfahrt-km">520 km</div><div class="anfahrt-time">ca. 5:00 h</div></div>
+      </div>
+    </div>
   </div>
 
   <!-- UNTERKUNFT 4 -->
@@ -463,6 +501,15 @@ h1 span { color: var(--accent); }
         <span class="tag red">Kein Grill</span>
         <span class="tag neutral">Städtische Lage</span>
         <span class="tag neutral">3★ Hotel</span>
+      </div>
+    </div>
+    <div class="anfahrt-area">
+      <div class="anfahrt-label">🚗 Anfahrt</div>
+      <div class="anfahrt-rows">
+        <div class="anfahrt-row"><div class="anfahrt-dot" style="background:#378ADD;"></div><div class="anfahrt-city">Duisburg</div><div class="anfahrt-bar-wrap"><div class="anfahrt-bar" style="width:100%; background:#378ADD;"></div></div><div class="anfahrt-km">380 km</div><div class="anfahrt-time">ca. 3:30 h</div></div>
+        <div class="anfahrt-row"><div class="anfahrt-dot" style="background:#1D9E75;"></div><div class="anfahrt-city">Marburg</div><div class="anfahrt-bar-wrap"><div class="anfahrt-bar" style="width:58%; background:#1D9E75;"></div></div><div class="anfahrt-km">220 km</div><div class="anfahrt-time">ca. 2:15 h</div></div>
+        <div class="anfahrt-row"><div class="anfahrt-dot" style="background:#D85A30;"></div><div class="anfahrt-city">Ettlingen</div><div class="anfahrt-bar-wrap"><div class="anfahrt-bar" style="width:5%; background:#D85A30;"></div></div><div class="anfahrt-km">20 km</div><div class="anfahrt-time">ca. 0:20 h</div></div>
+        <div class="anfahrt-row"><div class="anfahrt-dot" style="background:#BA7517;"></div><div class="anfahrt-city">Kaufbeuren</div><div class="anfahrt-bar-wrap"><div class="anfahrt-bar" style="width:63%; background:#BA7517;"></div></div><div class="anfahrt-km">240 km</div><div class="anfahrt-time">ca. 2:30 h</div></div>
       </div>
     </div>
   </div>
