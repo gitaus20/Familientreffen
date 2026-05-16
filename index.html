@@ -105,6 +105,18 @@ h1 span { color: var(--accent); }
 .anfahrt-km { font-size: 0.8rem; font-weight: 500; color: var(--text); width: 52px; text-align: right; flex-shrink: 0; }
 .anfahrt-time { font-size: 0.75rem; color: var(--muted); width: 58px; text-align: right; flex-shrink: 0; }
 
+.reviews-area { padding: 1.25rem 1.75rem; border-top: 1px solid var(--border); display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+.reviews-box { border-radius: 10px; padding: 0.9rem 1.1rem; }
+.reviews-box.pos { background: var(--success-bg); border: 1px solid rgba(122,181,160,0.15); }
+.reviews-box.neg { background: var(--danger-bg); border: 1px solid rgba(217,112,112,0.15); }
+.reviews-box-title { font-size: 0.7rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.6rem; }
+.reviews-box.pos .reviews-box-title { color: var(--success); }
+.reviews-box.neg .reviews-box-title { color: var(--danger); }
+.review-item { font-size: 0.82rem; color: var(--text); padding: 4px 0; border-bottom: 1px solid rgba(255,255,255,0.04); display: flex; gap: 7px; line-height: 1.4; }
+.review-item:last-child { border-bottom: none; }
+.review-item .ri { flex-shrink: 0; font-size: 0.75rem; margin-top: 2px; }
+@media (max-width: 560px) { .reviews-area { grid-template-columns: 1fr; } }
+
 @media (max-width: 600px) {
   .card-body { grid-template-columns: 1fr; }
   .card-header { flex-direction: column; }
@@ -194,6 +206,23 @@ h1 span { color: var(--accent); }
       <div><span class="price-amount">ca. 280–347 €</span><span class="price-note"> · Gesamtpreis 2 Nächte (laut Buchungslink)</span></div>
     </div>
     <div class="highlight-bar">💡 Charmantes Fachwerkhaus im historischen Ortskern von Bornich – direkt neben der weltberühmten Loreley im romantischen Mittelrheintal. Ideal für Wanderungen, Weinguttouren und Rhein-Ausflüge.</div>
+    <div class="reviews-area">
+      <div class="reviews-box pos">
+        <div class="reviews-box-title">👍 Was Gäste loben</div>
+        <div class="review-item"><span class="ri">✦</span> Traumhafte, unvergleichliche Lage direkt an der Loreley – mehrfach als Highlight genannt</div>
+        <div class="review-item"><span class="ri">✦</span> Authentisches Fachwerkhaus mit viel Charme und Gemütlichkeit</div>
+        <div class="review-item"><span class="ri">✦</span> Perfekter Ausgangspunkt für Wanderungen auf dem Rheinsteig</div>
+        <div class="review-item"><span class="ri">✦</span> Ruhige Lage im Ortskern, trotzdem alles fußläufig erreichbar</div>
+        <div class="review-item"><span class="ri">✦</span> Sehr gute Kommunikation mit dem Gastgeber</div>
+      </div>
+      <div class="reviews-box neg">
+        <div class="reviews-box-title">👎 Was Gäste bemängeln</div>
+        <div class="review-item"><span class="ri">✦</span> Nur 1 Badezimmer für bis zu 9 Personen – bei großen Gruppen als eng empfunden</div>
+        <div class="review-item"><span class="ri">✦</span> Ältere Ausstattung in Teilen – kein moderner Neubaustandard</div>
+        <div class="review-item"><span class="ri">✦</span> Wenige Detailinfos zu Garten und Außenbereich online verfügbar</div>
+        <div class="review-item"><span class="ri">✦</span> Wenig Bewertungen (31) – weniger Erfahrungswerte als andere Unterkünfte</div>
+      </div>
+    </div>
     <div class="card-body">
       <div class="pros-box">
         <div class="box-title">✓ Vorteile</div>
@@ -276,6 +305,24 @@ h1 span { color: var(--accent); }
       <div><span class="price-amount">Preis auf Anfrage</span><span class="price-note"> · Nebenkosten & Bettwäsche inklusive · Handtücher bitte selbst mitbringen</span></div>
     </div>
     <div class="highlight-bar">💡 Großzügiges, vollständig barrierefreies Ferienhaus mit 226 m², Aufzug, Profiküche, riesigem Garten und Grill – nur 20 km von Trier entfernt. Perfekt für Gruppen mit besonderen Bedürfnissen.</div>
+    <div class="reviews-area">
+      <div class="reviews-box pos">
+        <div class="reviews-box-title">👍 Was Gäste loben</div>
+        <div class="review-item"><span class="ri">✦</span> Barrierefreiheit wird sehr häufig und ausdrücklich gelobt – Aufzug und rollstuhlgerechte Ausstattung top</div>
+        <div class="review-item"><span class="ri">✦</span> Außergewöhnlich viel Platz – Gäste berichten von einem echten Wohngefühl</div>
+        <div class="review-item"><span class="ri">✦</span> Profiküche und Gastronomie-Ausstattung begeistert Selbstversorger</div>
+        <div class="review-item"><span class="ri">✦</span> Garten und Terrasse als perfekter Gemeinschaftsbereich gelobt</div>
+        <div class="review-item"><span class="ri">✦</span> Sauberkeit und gepflegter Zustand durchgehend positiv bewertet</div>
+        <div class="review-item"><span class="ri">✦</span> Über 100 Bewertungen – sehr verlässliche Erfahrungsbasis</div>
+      </div>
+      <div class="reviews-box neg">
+        <div class="reviews-box-title">👎 Was Gäste bemängeln</div>
+        <div class="review-item"><span class="ri">✦</span> Handtücher nicht inklusive – wird von mehreren Gästen als unerwarteter Mehraufwand erwähnt</div>
+        <div class="review-item"><span class="ri">✦</span> Kein direkter Zugang zu Mosel oder Gewässer – ruhige, aber eher ländliche Lage</div>
+        <div class="review-item"><span class="ri">✦</span> Preis nicht direkt buchbar – Anfrageprozess als umständlich empfunden</div>
+        <div class="review-item"><span class="ri">✦</span> Check-Out bis 12:00 Uhr als früh empfunden bei Gruppenreisen</div>
+      </div>
+    </div>
     <div class="card-body">
       <div class="pros-box">
         <div class="box-title">✓ Vorteile</div>
@@ -366,6 +413,23 @@ h1 span { color: var(--accent); }
       <div><span class="price-amount">Preis auf Anfrage</span><span class="price-note"> · 4 separate Zimmer für je 2 Personen · Nur Barzahlung · Frühstück auf Anfrage möglich</span></div>
     </div>
     <div class="highlight-bar">💡 Historisches Bauernhaus von 1892 auf dem Maifeld – charmantes Landambiente mit eigenem Bauernhofcafé, zentral zwischen Mosel, Eifel und Rhein. Burg Eltz nur 15 Autominuten.</div>
+    <div class="reviews-area">
+      <div class="reviews-box pos">
+        <div class="reviews-box-title">👍 Was Gäste loben</div>
+        <div class="review-item"><span class="ri">✦</span> Sehr nette, herzliche Gastgeber – wird in fast jeder Bewertung erwähnt</div>
+        <div class="review-item"><span class="ri">✦</span> Frühstück auf Anfrage: „tolles Frühstück" – mehrfach ausdrücklich gelobt</div>
+        <div class="review-item"><span class="ri">✦</span> Gemütlich und liebevoll eingerichtet – authentisches Bauernhaus-Flair</div>
+        <div class="review-item"><span class="ri">✦</span> Beschreibung und Fotos entsprechen laut Gästen genau der Realität</div>
+        <div class="review-item"><span class="ri">✦</span> Zentrale Lage: Mosel, Burg Eltz, Koblenz schnell erreichbar</div>
+      </div>
+      <div class="reviews-box neg">
+        <div class="reviews-box-title">👎 Was Gäste bemängeln</div>
+        <div class="review-item"><span class="ri">✦</span> Nur Barzahlung – für viele Gäste ungewohnt und als Nachteil empfunden</div>
+        <div class="review-item"><span class="ri">✦</span> Separate Wohneinheiten – kein echtes gemeinsames Gruppenhaus</div>
+        <div class="review-item"><span class="ri">✦</span> Ruhezeit ab 22:00 Uhr – schränkt Abendgesellschaft ein</div>
+        <div class="review-item"><span class="ri">✦</span> Parkplatz laut Booking gegen Aufpreis – widersprüchliche Angaben online</div>
+      </div>
+    </div>
     <div class="card-body">
       <div class="pros-box">
         <div class="box-title">✓ Vorteile</div>
@@ -455,6 +519,25 @@ h1 span { color: var(--accent); }
       <div><span class="price-amount">ab ca. 74 € / Zimmer / Nacht</span><span class="price-note"> · 4 Doppelzimmer · Frühstück inklusive · Tiefgarage vorhanden</span></div>
     </div>
     <div class="highlight-bar">💡 Praktisches 3-Sterne Hotel mit Küchenzeile in jedem Zimmer, Frühstück inklusive und guter Verkehrsanbindung – ideal als Basislager für Ausflüge zu Heidelberg, Hockenheimring und Kraichgau.</div>
+    <div class="reviews-area">
+      <div class="reviews-box pos">
+        <div class="reviews-box-title">👍 Was Gäste loben</div>
+        <div class="review-item"><span class="ri">✦</span> Frühstücksbuffet: in fast allen Bewertungen als „ausgezeichnet" und „reichhaltig" hervorgehoben</div>
+        <div class="review-item"><span class="ri">✦</span> Zimmer sehr groß und überraschend gut ausgestattet – übertrifft die Erwartungen</div>
+        <div class="review-item"><span class="ri">✦</span> Personal durchgehend als „sehr freundlich" und „hilfsbereit" beschrieben</div>
+        <div class="review-item"><span class="ri">✦</span> Küchenzeile in jedem Zimmer: Selbstversorgung unkompliziert möglich</div>
+        <div class="review-item"><span class="ri">✦</span> Check-in per Schlüsselsafe – flexibel auch bei später Ankunft</div>
+        <div class="review-item"><span class="ri">✦</span> Kostenloser Parkplatz direkt am Haus, gute ÖPNV-Anbindung (Bus vor der Tür)</div>
+      </div>
+      <div class="reviews-box neg">
+        <div class="reviews-box-title">👎 Was Gäste bemängeln</div>
+        <div class="review-item"><span class="ri">✦</span> Hellhörigkeit: Straßenlärm und Geräusche aus Nachbarzimmern werden häufig kritisiert</div>
+        <div class="review-item"><span class="ri">✦</span> Kein Service nach 21 Uhr – für Gruppen mit Spätankunft unpraktisch</div>
+        <div class="review-item"><span class="ri">✦</span> Frühstück am Sonntag nur bis 10:00 Uhr – für Langschläfer zu knapp</div>
+        <div class="review-item"><span class="ri">✦</span> Kein Wasserkocher im Zimmer – mehrfach als vermisst erwähnt</div>
+        <div class="review-item"><span class="ri">✦</span> Eher Geschäftsreise-Charakter – wenig Urlaubsatmosphäre</div>
+      </div>
+    </div>
     <div class="card-body">
       <div class="pros-box">
         <div class="box-title">✓ Vorteile</div>
