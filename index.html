@@ -24,7 +24,6 @@ h1 { font-family: 'Fraunces', serif; font-size: clamp(2rem, 5vw, 3rem); font-wei
 h1 span { color: var(--accent); }
 .header-sub { font-size: 0.9rem; color: var(--muted); font-weight: 300; }
 
-.overview-bar { background: var(--surface); border-bottom: 1px solid var(--border); padding: 1rem 1.5rem; overflow-x: auto; }
 .overview-inner { max-width: 960px; margin: 0 auto; display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
 .overview-label { font-size: 0.72rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.1em; margin-right: 4px; white-space: nowrap; }
 .overview-chip { display: inline-flex; align-items: center; gap: 6px; background: var(--surface2); border: 1px solid var(--border); border-radius: 20px; padding: 4px 12px; font-size: 0.8rem; color: var(--text); white-space: nowrap; text-decoration: none; transition: border-color 0.2s; }
@@ -94,6 +93,101 @@ h1 span { color: var(--accent); }
 .site-footer { border-top: 1px solid var(--border); padding: 1.5rem; text-align: center; font-size: 0.78rem; color: var(--muted); }
 .site-footer a { color: var(--accent); text-decoration: none; }
 
+.overview-bar {
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  padding: 0.75rem 1.5rem;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.price-bars-wrap {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 1.25rem 1.75rem;
+  margin-bottom: 2rem;
+}
+
+.price-bars-title {
+  font-size: 0.7rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 1rem;
+}
+
+.price-bar-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+
+.price-bar-row:last-child { margin-bottom: 0; }
+
+.price-bar-label {
+  font-size: 0.8rem;
+  color: var(--text);
+  width: 160px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.price-bar-num {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px; height: 18px;
+  border-radius: 50%;
+  background: var(--accent);
+  color: #0d1117;
+  font-size: 0.65rem;
+  font-weight: 600;
+  flex-shrink: 0;
+}
+
+.price-bar-track {
+  flex: 1;
+  background: var(--surface2);
+  border-radius: 4px;
+  height: 8px;
+  overflow: hidden;
+}
+
+.price-bar-fill {
+  height: 100%;
+  border-radius: 4px;
+  transition: width 0.6s ease;
+}
+
+.price-bar-amount {
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--accent);
+  width: 60px;
+  text-align: right;
+  flex-shrink: 0;
+}
+
+.price-bar-note {
+  font-size: 0.72rem;
+  color: var(--muted);
+  width: 80px;
+  flex-shrink: 0;
+  text-align: right;
+}
+
+@media (max-width: 560px) {
+  .price-bar-note { display: none; }
+  .price-bar-label { width: 120px; font-size: 0.75rem; }
+}
+
 .anfahrt-area { padding: 1.1rem 1.75rem 1.25rem; border-top: 1px solid var(--border); }
 .anfahrt-label { font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); margin-bottom: 0.6rem; }
 .anfahrt-rows { display: flex; flex-direction: column; gap: 6px; }
@@ -162,7 +256,7 @@ h1 span { color: var(--accent); }
         <tr><td>Typ</td><td>Ferienhaus</td><td>Ferienhaus</td><td>Pension / Zimmer</td><td>3★ Hotel</td></tr>
         <tr><td>Max. Personen</td><td>9</td><td>10</td><td>8 (4 Zimmer)</td><td>8 (4 Zimmer)</td></tr>
         <tr><td>Schlafzimmer</td><td>4</td><td>4</td><td>4 separate</td><td>4 Doppelzimmer</td></tr>
-        <tr><td>Preis (2 Nächte)</td><td>ca. 280–347 €</td><td>auf Anfrage</td><td>auf Anfrage</td><td>ab ca. 74 €/Zi./Nacht</td></tr>
+        <tr><td>Preis (2 Nächte, 8 Pers.)</td><td>ca. 600 €</td><td>ca. 730 €</td><td>ca. 600 €</td><td>ca. 620 €</td></tr>
         <tr><td>Bewertung</td><td>9,6 / 10</td><td>9,5 / 10</td><td>8,0 / 10</td><td>8,1 / 10 (272 Bew.)</td></tr>
         <tr><td>Gemeinsame Unterkunft</td><td><span class="check">✓ ja</span></td><td><span class="check">✓ ja</span></td><td><span class="cross">✗ nein</span></td><td><span class="cross">✗ nein</span></td></tr>
         <tr><td>Barrierefrei</td><td><span class="cross">✗</span></td><td><span class="check">✓ vollständig</span></td><td><span class="check">✓ ebenerdige Dusche</span></td><td><span class="check">✓ Rollstuhlzugang</span></td></tr>
@@ -176,6 +270,39 @@ h1 span { color: var(--accent); }
         <tr><td>Highlight</td><td>Loreley, Burgen</td><td>Trier, Wandern</td><td>Burg Eltz, Eifel</td><td>Heidelberg, SAP, Hockenheimring</td></tr>
       </tbody>
     </table>
+  </div>
+
+  <!-- PREISVERGLEICH -->
+  <div class="price-bars-wrap">
+    <div class="price-bars-title">💶 Preisvergleich · 2 Nächte · 8 Personen gesamt</div>
+
+    <div class="price-bar-row">
+      <div class="price-bar-label"><span class="price-bar-num">1</span> Fachwerkhaus Loreley</div>
+      <div class="price-bar-track"><div class="price-bar-fill" style="width:82%; background:#c9a96e;"></div></div>
+      <div class="price-bar-amount">600 €</div>
+      <div class="price-bar-note">75 €/Pers.</div>
+    </div>
+
+    <div class="price-bar-row">
+      <div class="price-bar-label"><span class="price-bar-num">2</span> Ferienhaus Zerf</div>
+      <div class="price-bar-track"><div class="price-bar-fill" style="width:100%; background:#d97070;"></div></div>
+      <div class="price-bar-amount">730 €</div>
+      <div class="price-bar-note">91 €/Pers.</div>
+    </div>
+
+    <div class="price-bar-row">
+      <div class="price-bar-label"><span class="price-bar-num">3</span> Bauernschmause Polch</div>
+      <div class="price-bar-track"><div class="price-bar-fill" style="width:82%; background:#c9a96e;"></div></div>
+      <div class="price-bar-amount">600 €</div>
+      <div class="price-bar-note">75 €/Pers.</div>
+    </div>
+
+    <div class="price-bar-row">
+      <div class="price-bar-label"><span class="price-bar-num">4</span> Hotel Ifen Wiesloch</div>
+      <div class="price-bar-track"><div class="price-bar-fill" style="width:85%; background:#d4a843;"></div></div>
+      <div class="price-bar-amount">620 €</div>
+      <div class="price-bar-note">77 €/Pers.</div>
+    </div>
   </div>
 
   <!-- UNTERKUNFT 1 -->
@@ -203,7 +330,7 @@ h1 span { color: var(--accent); }
       <div class="stat"><div class="stat-icon">⭐</div><div class="stat-value">9,6/10</div><div class="stat-label">Bewertung</div></div>
     </div>
     <div class="price-banner">
-      <div><span class="price-amount">ca. 280–347 €</span><span class="price-note"> · Gesamtpreis 2 Nächte (laut Buchungslink)</span></div>
+      <div><span class="price-amount">ca. 600 €</span><span class="price-note"> · Gesamtpreis 2 Nächte · 8 Personen</span></div>
     </div>
     <div class="highlight-bar">💡 Charmantes Fachwerkhaus im historischen Ortskern von Bornich – direkt neben der weltberühmten Loreley im romantischen Mittelrheintal. Ideal für Wanderungen, Weinguttouren und Rhein-Ausflüge.</div>
     <div class="reviews-area">
@@ -302,7 +429,7 @@ h1 span { color: var(--accent); }
       <div class="stat"><div class="stat-icon">⭐</div><div class="stat-value">9,5/10</div><div class="stat-label">Bewertung</div></div>
     </div>
     <div class="price-banner">
-      <div><span class="price-amount">Preis auf Anfrage</span><span class="price-note"> · Nebenkosten & Bettwäsche inklusive · Handtücher bitte selbst mitbringen</span></div>
+      <div><span class="price-amount">ca. 730 €</span><span class="price-note"> · Gesamtpreis 2 Nächte · 8 Personen · Bettwäsche inkl. · Handtücher selbst mitbringen</span></div>
     </div>
     <div class="highlight-bar">💡 Großzügiges, vollständig barrierefreies Ferienhaus mit 226 m², Aufzug, Profiküche, riesigem Garten und Grill – nur 20 km von Trier entfernt. Perfekt für Gruppen mit besonderen Bedürfnissen.</div>
     <div class="reviews-area">
@@ -410,7 +537,7 @@ h1 span { color: var(--accent); }
       <div class="stat"><div class="stat-icon">🏚️</div><div class="stat-value">1892</div><div class="stat-label">Baujahr</div></div>
     </div>
     <div class="price-banner">
-      <div><span class="price-amount">Preis auf Anfrage</span><span class="price-note"> · 4 separate Zimmer für je 2 Personen · Nur Barzahlung · Frühstück auf Anfrage möglich</span></div>
+      <div><span class="price-amount">ca. 600 €</span><span class="price-note"> · Gesamtpreis 2 Nächte · 4 Zimmer à 2 Pers. · Nur Barzahlung · Frühstück auf Anfrage</span></div>
     </div>
     <div class="highlight-bar">💡 Historisches Bauernhaus von 1892 auf dem Maifeld – charmantes Landambiente mit eigenem Bauernhofcafé, zentral zwischen Mosel, Eifel und Rhein. Burg Eltz nur 15 Autominuten.</div>
     <div class="reviews-area">
@@ -516,7 +643,7 @@ h1 span { color: var(--accent); }
       <div class="stat"><div class="stat-icon">⭐</div><div class="stat-value">8,1/10</div><div class="stat-label">Bewertung</div></div>
     </div>
     <div class="price-banner">
-      <div><span class="price-amount">ab ca. 74 € / Zimmer / Nacht</span><span class="price-note"> · 4 Doppelzimmer · Frühstück inklusive · Tiefgarage vorhanden</span></div>
+      <div><span class="price-amount">ca. 620 €</span><span class="price-note"> · Gesamtpreis 2 Nächte · 4 Doppelzimmer · Frühstück inklusive · Tiefgarage kostenlos</span></div>
     </div>
     <div class="highlight-bar">💡 Praktisches 3-Sterne Hotel mit Küchenzeile in jedem Zimmer, Frühstück inklusive und guter Verkehrsanbindung – ideal als Basislager für Ausflüge zu Heidelberg, Hockenheimring und Kraichgau.</div>
     <div class="reviews-area">
