@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ferienwohnungen Bopparder Hamm – Familientreffen 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#0d1117;--surface:#161b27;--surface2:#1c2235;--border:#252d42;--text:#e2e5ef;--muted:#5c6585;--accent:#c9a96e;--success:#7ab5a0;--success-bg:rgba(122,181,160,0.08);--danger:#d97070;--danger-bg:rgba(217,112,112,0.08);--warn:#d4a843;--warn-bg:rgba(212,168,67,0.08)}
+body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;padding:2rem 1rem 3rem}
+.wrap{max-width:680px;margin:0 auto}
+.back{font-size:.8rem;color:var(--muted);text-decoration:none;display:inline-flex;align-items:center;gap:5px;margin-bottom:1.5rem;transition:color .2s}
+.back:hover{color:var(--accent)}
+.card{background:var(--surface);border:1px solid var(--border);border-radius:16px;overflow:hidden}
+.card-header{padding:1.5rem 1.75rem 1.25rem;border-bottom:1px solid var(--border)}
+.eyebrow{font-size:.68rem;text-transform:uppercase;letter-spacing:.14em;color:var(--accent);margin-bottom:.5rem;font-weight:500}
+.name{font-family:'Fraunces',serif;font-size:1.6rem;font-weight:300;color:#fff;line-height:1.2;margin-bottom:.3rem}
+.location{font-size:.85rem;color:var(--muted)}
+.stats{display:grid;grid-template-columns:repeat(5,1fr);border-bottom:1px solid var(--border)}
+.stat{padding:.9rem .75rem;border-right:1px solid var(--border);text-align:center}
+.stat:last-child{border-right:none}
+.stat-icon{font-size:1rem;margin-bottom:2px}
+.stat-val{font-size:.95rem;font-weight:500;color:#fff}
+.stat-lbl{font-size:.62rem;color:var(--muted);text-transform:uppercase;letter-spacing:.05em}
+.price-band{background:var(--warn-bg);border-bottom:1px solid rgba(212,168,67,.15);padding:.8rem 1.75rem;display:flex;align-items:center;gap:10px}
+.price-big{font-family:'Fraunces',serif;font-size:1.4rem;font-weight:500;color:var(--warn)}
+.price-note{font-size:.8rem;color:var(--muted)}
+.highlight{margin:1.25rem 1.75rem 0;background:rgba(201,169,110,.06);border:1px solid rgba(201,169,110,.15);border-radius:8px;padding:.75rem 1rem;font-size:.85rem;color:var(--accent);display:flex;gap:8px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:1rem;padding:1.25rem 1.75rem}
+.box{border-radius:10px;padding:.9rem 1.1rem}
+.box-pro{background:var(--success-bg);border:1px solid rgba(122,181,160,.15)}
+.box-con{background:var(--danger-bg);border:1px solid rgba(217,112,112,.15)}
+.box-title{font-size:.68rem;font-weight:500;text-transform:uppercase;letter-spacing:.1em;margin-bottom:.6rem}
+.box-pro .box-title{color:var(--success)}
+.box-con .box-title{color:var(--danger)}
+.li{font-size:.82rem;color:var(--text);padding:4px 0;border-bottom:1px solid rgba(255,255,255,.04);display:flex;gap:7px;line-height:1.4}
+.li:last-child{border-bottom:none}
+.reviews{padding:1.25rem 1.75rem;border-top:1px solid var(--border)}
+.reviews-title{font-size:.68rem;text-transform:uppercase;letter-spacing:.12em;color:var(--muted);margin-bottom:.75rem}
+.review-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.rbox{border-radius:10px;padding:.85rem 1rem}
+.rbox-pos{background:var(--success-bg);border:1px solid rgba(122,181,160,.15)}
+.rbox-neg{background:var(--danger-bg);border:1px solid rgba(217,112,112,.15)}
+.rbox-title{font-size:.68rem;font-weight:500;text-transform:uppercase;letter-spacing:.1em;margin-bottom:.6rem}
+.rbox-pos .rbox-title{color:var(--success)}
+.rbox-neg .rbox-title{color:var(--danger)}
+.ri{font-size:.82rem;color:var(--text);padding:4px 0;border-bottom:1px solid rgba(255,255,255,.04);display:flex;gap:7px;line-height:1.4}
+.ri:last-child{border-bottom:none}
+.tags-area{padding:1rem 1.75rem 1.25rem;border-top:1px solid var(--border)}
+.tags-title{font-size:.68rem;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);margin-bottom:.6rem}
+.tags{display:flex;flex-wrap:wrap;gap:5px}
+.tag{display:inline-block;padding:2px 9px;border-radius:20px;font-size:.73rem}
+.tg{background:rgba(122,181,160,.12);color:var(--success);border:1px solid rgba(122,181,160,.2)}
+.tr{background:rgba(217,112,112,.1);color:var(--danger);border:1px solid rgba(217,112,112,.15)}
+.tn{background:var(--surface2);color:var(--muted);border:1px solid var(--border)}
+.anfahrt{padding:1rem 1.75rem 1.25rem;border-top:1px solid var(--border)}
+.anfahrt-title{font-size:.68rem;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);margin-bottom:.6rem}
+.ar{display:flex;align-items:center;gap:10px;margin-bottom:6px}
+.ar:last-child{margin-bottom:0}
+.adot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+.acity{font-size:.8rem;color:var(--text);width:72px;flex-shrink:0}
+.atrack{flex:1;background:var(--surface2);border-radius:3px;height:5px;overflow:hidden}
+.abar{height:100%;border-radius:3px}
+.akm{font-size:.8rem;font-weight:500;color:var(--text);width:50px;text-align:right;flex-shrink:0}
+.atime{font-size:.74rem;color:var(--muted);width:58px;text-align:right;flex-shrink:0}
+.book-area{padding:1.25rem 1.75rem;border-top:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px}
+.book-note{font-size:.78rem;color:var(--muted)}
+.book-btn{background:var(--accent);color:#0d1117;text-decoration:none;border-radius:8px;padding:.55rem 1.25rem;font-size:.85rem;font-weight:500;transition:opacity .2s;white-space:nowrap}
+.book-btn:hover{opacity:.85}
+.footer{text-align:center;font-size:.75rem;color:var(--muted);margin-top:1.25rem}
+.footer a{color:var(--accent);text-decoration:none}
+@media(max-width:520px){.stats{grid-template-columns:repeat(3,1fr)}.grid2,.review-grid{grid-template-columns:1fr}.stat:nth-child(n+4){border-top:1px solid var(--border)}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <a class="back" href="index.html">← Zurück zur Übersicht</a>
+
+  <div class="card">
+
+    <div class="card-header">
+      <div class="eyebrow">Familientreffen 2026 · 11.–13. September · Vorschlag</div>
+      <div class="name">Ferienwohnungen Bopparder Hamm</div>
+      <div class="location">📍 Boppard, Rhein-Lahn-Kreis · UNESCO Welterbe Mittelrheintal · 20 km südlich von Koblenz</div>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><div class="stat-icon">👥</div><div class="stat-val">8</div><div class="stat-lbl">Personen</div></div>
+      <div class="stat"><div class="stat-icon">🛏️</div><div class="stat-val">4</div><div class="stat-lbl">Schlafzimmer</div></div>
+      <div class="stat"><div class="stat-icon">🏠</div><div class="stat-val">2</div><div class="stat-lbl">Wohnungen</div></div>
+      <div class="stat"><div class="stat-icon">🌊</div><div class="stat-val">direkt</div><div class="stat-lbl">Rheinblick</div></div>
+      <div class="stat"><div class="stat-icon">📍</div><div class="stat-val">20 km</div><div class="stat-lbl">Koblenz</div></div>
+    </div>
+
+    <div class="price-band">
+      <div class="price-big">Preis bitte eintragen</div>
+      <div class="price-note">· 2 Nächte · 2 Wohnungen à 4 Pers.</div>
+    </div>
+
+    <div class="highlight">💡 Zwei separate Ferienwohnungen direkt am berühmten Bopparder Hamm – dem größten Rheinbogen Deutschlands, inmitten des UNESCO-Welterbes Mittelrheintal. Weinberge, Burgen, Sesselbahn und Rheinsteig direkt vor der Tür.</div>
+
+    <div class="grid2">
+      <div class="box box-pro">
+        <div class="box-title">✓ Vorteile</div>
+        <div class="li"><span>✦</span> UNESCO-Welterbe Mittelrheintal – spektakuläre Landschaft direkt vor der Tür</div>
+        <div class="li"><span>✦</span> Bopparder Hamm: berühmteste Rheinschleife, Weinberge mit Riesling-Verkostungen</div>
+        <div class="li"><span>✦</span> Sesselbahn Vierseenblick nur 850 m entfernt</div>
+        <div class="li"><span>✦</span> Rheinsteig & 7 Traumschleifen-Wanderwege direkt erreichbar</div>
+        <div class="li"><span>✦</span> Koblenz 20 km · Loreley 20 km · Marksburg 35 km</div>
+        <div class="li"><span>✦</span> Eigener Parkplatz am Haus · Fahrradgarage</div>
+        <div class="li"><span>✦</span> Weinbistro mit Frühstück, Abendbrot & Weinproben vor Ort</div>
+        <div class="li"><span>✦</span> Gästekarte inklusive – kostenlose Ausflüge & ÖPNV</div>
+      </div>
+      <div class="box box-con">
+        <div class="box-title">✗ Nachteile</div>
+        <div class="li"><span>✦</span> 2 separate Wohnungen – Gruppe nicht komplett unter einem Dach</div>
+        <div class="li"><span>✦</span> Bahnlärm möglich – Bahnstrecke verläuft entlang des Rheins</div>
+        <div class="li"><span>✦</span> Keine detaillierte Ausstattungsliste bekannt (Grill, Handtücher etc. prüfen)</div>
+        <div class="li"><span>✦</span> Parken in Boppard generell kostenpflichtig – eigener Stellplatz wichtig</div>
+        <div class="li"><span>✦</span> Haustierregelung unklar – bitte anfragen</div>
+      </div>
+    </div>
+
+    <div class="reviews">
+      <div class="reviews-title">Was Gäste in Boppard-Unterkünften berichten</div>
+      <div class="review-grid">
+        <div class="rbox rbox-pos">
+          <div class="rbox-title">👍 Häufig gelobt</div>
+          <div class="ri"><span>✦</span> Rheinblick und Lage werden ausnahmslos begeistert beschrieben</div>
+          <div class="ri"><span>✦</span> „Herrlicher Blick auf den Rhein" – in fast jeder Boppard-Bewertung</div>
+          <div class="ri"><span>✦</span> Wanderwege direkt ab Unterkunft – ideal für Aktive</div>
+          <div class="ri"><span>✦</span> Weinbistro vor Ort sehr beliebt – lokale Weine aus dem Bopparder Hamm</div>
+          <div class="ri"><span>✦</span> Freundliche Gastgeber, saubere Unterkünfte</div>
+        </div>
+        <div class="rbox rbox-neg">
+          <div class="rbox-title">👎 Gelegentlich bemängelt</div>
+          <div class="ri"><span>✦</span> Bahnlärm tagsüber durch Rheinstrecke – trotz Lage an der Bahn meist positiv</div>
+          <div class="ri"><span>✦</span> Parken in Boppard schwierig ohne eigenen Stellplatz</div>
+          <div class="ri"><span>✦</span> Einkauf: Supermarkt 2 km entfernt – Auto empfehlenswert</div>
+          <div class="ri"><span>✦</span> Manche Unterkünfte über mehrere Etagen – Treppen beachten</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="tags-area">
+      <div class="tags-title">Highlights & Umgebung</div>
+      <div class="tags">
+        <span class="tag tg">UNESCO-Welterbe 🏛️</span>
+        <span class="tag tg">Rheinblick</span>
+        <span class="tag tg">Bopparder Hamm Weinberge</span>
+        <span class="tag tg">Sesselbahn 850 m</span>
+        <span class="tag tg">Rheinsteig</span>
+        <span class="tag tg">7 Traumschleifen</span>
+        <span class="tag tg">Weinbistro vor Ort</span>
+        <span class="tag tg">Gästekarte inkl.</span>
+        <span class="tag tg">Eigener Parkplatz</span>
+        <span class="tag tg">Koblenz 20 km</span>
+        <span class="tag tg">Loreley 20 km</span>
+        <span class="tag tg">Rheinschifffahrt</span>
+        <span class="tag tr">2 separate Wohnungen</span>
+        <span class="tag tr">Bahnlärm möglich</span>
+        <span class="tag tn">Haustiere – bitte anfragen</span>
+        <span class="tag tn">Supermarkt 2 km</span>
+      </div>
+    </div>
+
+    <div class="anfahrt">
+      <div class="anfahrt-title">🚗 Anfahrt</div>
+      <div class="ar"><div class="adot" style="background:#378ADD;"></div><div class="acity">Duisburg</div><div class="atrack"><div class="abar" style="width:42%;background:#378ADD;"></div></div><div class="akm">170 km</div><div class="atime">ca. 1:50 h</div></div>
+      <div class="ar"><div class="adot" style="background:#1D9E75;"></div><div class="acity">Marburg</div><div class="atrack"><div class="abar" style="width:28%;background:#1D9E75;"></div></div><div class="akm">110 km</div><div class="atime">ca. 1:20 h</div></div>
+      <div class="ar"><div class="adot" style="background:#D85A30;"></div><div class="acity">Ettlingen</div><div class="atrack"><div class="abar" style="width:68%;background:#D85A30;"></div></div><div class="akm">275 km</div><div class="atime">ca. 3:00 h</div></div>
+      <div class="ar"><div class="adot" style="background:#BA7517;"></div><div class="acity">Kaufbeuren</div><div class="atrack"><div class="abar" style="width:100%;background:#BA7517;"></div></div><div class="akm">520 km</div><div class="atime">ca. 5:00 h</div></div>
+    </div>
+
+    <div class="book-area">
+      <div class="book-note">Booking.com · 2 Wohnungen à 4 Personen · 11.–13. Sept. 2026</div>
+      <a class="book-btn" href="https://www.booking.com/hotel/de/ferienwohnungen-bopparder-hamm.de.html" target="_blank">Zur Buchung →</a>
+    </div>
+
+  </div>
+
+  <div class="footer">
+    Familientreffen 2026 · <a href="index.html">← Zurück zur Übersicht</a>
+  </div>
+
+</div>
+</body>
+</html>
