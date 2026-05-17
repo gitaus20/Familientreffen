@@ -97,6 +97,21 @@ h1 span{color:var(--accent)}
 .site-footer{border-top:1px solid var(--border);padding:1.25rem;text-align:center;font-size:.75rem;color:var(--muted)}
 .site-footer a{color:var(--accent);text-decoration:none}
 
+/* GEMEINSAM / SEPARAT BADGE */
+.card.gemeinsam{border-top:3px solid #7ab5a0}
+.card.separat{border-top:3px solid #d4a843}
+.typ-badge{display:inline-flex;align-items:center;gap:5px;font-size:.68rem;font-weight:500;padding:2px 9px;border-radius:20px;margin-top:4px}
+.typ-badge.g{background:rgba(122,181,160,.12);color:#7ab5a0;border:1px solid rgba(122,181,160,.25)}
+.typ-badge.s{background:rgba(212,168,67,.1);color:#d4a843;border:1px solid rgba(212,168,67,.22)}
+
+/* AKTUALISIERUNGSDATUM */
+.update-bar{padding:.4rem 1.25rem;border-bottom:1px solid var(--border);font-size:.68rem;color:var(--muted);display:flex;align-items:center;gap:5px;background:rgba(255,255,255,.015)}
+
+/* LEGENDE */
+.legende{max-width:720px;margin:0 auto;padding:0 1.25rem 0;display:flex;gap:12px;flex-wrap:wrap;margin-bottom:-.5rem}
+.legende-item{display:flex;align-items:center;gap:6px;font-size:.75rem;color:var(--muted)}
+.legende-dot{width:12px;height:3px;border-radius:2px;flex-shrink:0}
+
 @media(max-width:520px){.pro-con,.reviews{grid-template-columns:1fr}.pro-box,.rbox-pos{border-right:none;border-bottom:1px solid var(--border)}.card-right{flex-direction:row;align-items:center}}
 </style>
 </head>
@@ -108,15 +123,21 @@ h1 span{color:var(--accent)}
   <p class="sub">Unterkünfte im Vergleich · Stand: 16. Mai 2026</p>
 </header>
 
+<div class="legende">
+  <div class="legende-item"><div class="legende-dot" style="background:#7ab5a0;"></div> Gemeinsame Unterkunft</div>
+  <div class="legende-item"><div class="legende-dot" style="background:#d4a843;"></div> Separate Zimmer / Wohnungen</div>
+</div>
+
 <main class="main">
 
 <!-- ① DELUXE FLAT BENDORF -->
-<div class="card">
+<div class="card gemeinsam">
   <div class="card-top">
     <div class="num">1</div>
     <div class="card-title-area">
       <div class="card-name">Deluxe Flat – PS4, Parken, Netflix</div>
       <div class="card-loc">📍 Bendorf · Rheinland-Pfalz · 12 km zu Koblenz</div>
+      <span class="typ-badge g">🏠 Gemeinsame Unterkunft</span>
     </div>
     <div class="card-right">
       <div class="rating"><div class="rating-num">9,6</div><div class="rating-lbl">Booking</div></div>
@@ -130,6 +151,7 @@ h1 span{color:var(--accent)}
     <div class="stat"><div class="stat-icon">🏠</div><div class="stat-val">Gemeinsam</div><div class="stat-lbl">Typ</div></div>
     <div class="stat"><div class="stat-icon">🎮</div><div class="stat-val">PS4+Netflix</div><div class="stat-lbl">Extra</div></div>
   </div>
+  <div class="update-bar">🕐 Zuletzt aktualisiert: 16. Mai 2026 · Preis: ca. 640 € (eigene Recherche)</div>
   <div class="price-row"><span class="price-big">640 €</span><span class="price-pp">gesamt · 2 Nächte · 80 €/Pers.</span></div>
   <div class="highlight">💡 Modern auf 2 Etagen, PS4 & Netflix inklusive, 2 Bäder, Schlüsselsafe. Koblenz 12 km, Burg Eltz 20 km.</div>
   <div class="pro-con">
@@ -170,12 +192,13 @@ h1 span{color:var(--accent)}
 </div>
 
 <!-- ② FERIENHAUS ZERF -->
-<div class="card">
+<div class="card gemeinsam">
   <div class="card-top">
     <div class="num">2</div>
     <div class="card-title-area">
       <div class="card-name">Ferienhaus Zerf – Barrierefrei</div>
       <div class="card-loc">📍 Zerf · Hunsrück · 20 km zu Trier</div>
+      <span class="typ-badge g">🏠 Gemeinsame Unterkunft</span>
     </div>
     <div class="card-right">
       <div class="rating"><div class="rating-num">9,5</div><div class="rating-lbl">100+ Bew.</div></div>
@@ -189,6 +212,7 @@ h1 span{color:var(--accent)}
     <div class="stat"><div class="stat-icon">📐</div><div class="stat-val">226 m²</div><div class="stat-lbl">Fläche</div></div>
     <div class="stat"><div class="stat-icon">♿</div><div class="stat-val">Aufzug</div><div class="stat-lbl">Barrierefrei</div></div>
   </div>
+  <div class="update-bar">🕐 Zuletzt aktualisiert: 16. Mai 2026 · Preis: ca. 730 € (eigene Recherche)</div>
   <div class="price-row"><span class="price-big">730 €</span><span class="price-pp">gesamt · 2 Nächte · 91 €/Pers.</span></div>
   <div class="highlight">💡 226 m², vollständig barrierefrei mit Aufzug, Profiküche, großer Garten & Grill. Höchste Kapazität – ideal für Gruppen mit Mobilitätsbedarf.</div>
   <div class="pro-con">
@@ -229,12 +253,13 @@ h1 span{color:var(--accent)}
 </div>
 
 <!-- ③ BAUERNSCHMAUSE POLCH -->
-<div class="card">
+<div class="card separat">
   <div class="card-top">
     <div class="num">3</div>
     <div class="card-title-area">
       <div class="card-name">Ferienwohnungen Bauernschmause</div>
       <div class="card-loc">📍 Polch · Maifeld · 12 km zur Mosel</div>
+      <span class="typ-badge s">🚪 Separate Zimmer</span>
     </div>
     <div class="card-right">
       <div class="rating"><div class="rating-num">8,0</div><div class="rating-lbl">Booking</div></div>
@@ -248,6 +273,7 @@ h1 span{color:var(--accent)}
     <div class="stat"><div class="stat-icon">🏚️</div><div class="stat-val">1892</div><div class="stat-lbl">Baujahr</div></div>
     <div class="stat"><div class="stat-icon">☕</div><div class="stat-val">Café</div><div class="stat-lbl">vor Ort</div></div>
   </div>
+  <div class="update-bar">🕐 Zuletzt aktualisiert: 16. Mai 2026 · Preis: ca. 600 € (eigene Recherche) · nur Barzahlung</div>
   <div class="price-row"><span class="price-big">600 €</span><span class="price-pp">gesamt · 2 Nächte · 75 €/Pers. · nur Barzahlung</span></div>
   <div class="highlight">💡 Historisches Bauernhaus (1892) mit Bauernhofcafé und Weinbistro. Günstigste Option – Burg Eltz 15 km, Koblenz 21 km.</div>
   <div class="pro-con">
@@ -288,12 +314,13 @@ h1 span{color:var(--accent)}
 </div>
 
 <!-- ④ HOTEL IFEN WIESLOCH -->
-<div class="card">
+<div class="card separat">
   <div class="card-top">
     <div class="num">4</div>
     <div class="card-title-area">
       <div class="card-name">Hotel Ifen Wiesloch</div>
       <div class="card-loc">📍 Wiesloch · Baden-Württemberg · 18 km zu Heidelberg</div>
+      <span class="typ-badge s">🚪 Separate Hotelzimmer</span>
     </div>
     <div class="card-right">
       <div class="rating"><div class="rating-num">8,1</div><div class="rating-lbl">272 Bew.</div></div>
@@ -307,6 +334,7 @@ h1 span{color:var(--accent)}
     <div class="stat"><div class="stat-icon">🍳</div><div class="stat-val">Frühstück</div><div class="stat-lbl">inkl.</div></div>
     <div class="stat"><div class="stat-icon">🚗</div><div class="stat-val">Tiefgarage</div><div class="stat-lbl">gratis</div></div>
   </div>
+  <div class="update-bar">🕐 Zuletzt aktualisiert: 16. Mai 2026 · Preis: ca. 620 € inkl. Frühstück (eigene Recherche)</div>
   <div class="price-row"><span class="price-big">620 €</span><span class="price-pp">gesamt · 2 Nächte · 77 €/Pers. · Frühstück inkl.</span></div>
   <div class="highlight">💡 3-Sterne Hotel mit Küchenzeile & Frühstücksbuffet. Ettlingen nur 20 km – günstigste Anfahrt für Ettlinger Teilnehmer.</div>
   <div class="pro-con">
@@ -347,12 +375,13 @@ h1 span{color:var(--accent)}
 </div>
 
 <!-- ⑤ FOREST VIEW BAD KREUZNACH -->
-<div class="card">
+<div class="card gemeinsam">
   <div class="card-top">
     <div class="num">5</div>
     <div class="card-title-area">
       <div class="card-name">Mein Apartment – Forest View</div>
       <div class="card-loc">📍 Bad Kreuznach · Nahe-Tal · Panoramablick Soonwald</div>
+      <span class="typ-badge g">🏠 Gemeinsame Unterkunft</span>
     </div>
     <div class="card-right">
       <div class="rating"><div class="rating-num">9,7</div><div class="rating-lbl">34 Bew.</div></div>
@@ -366,6 +395,7 @@ h1 span{color:var(--accent)}
     <div class="stat"><div class="stat-icon">❄️</div><div class="stat-val">Klima</div><div class="stat-lbl">anlage</div></div>
     <div class="stat"><div class="stat-icon">🌿</div><div class="stat-val">Balkon</div><div class="stat-lbl">Waldblick</div></div>
   </div>
+  <div class="update-bar">🕐 Zuletzt aktualisiert: 16. Mai 2026 · Preis: ca. 730 € (eigene Recherche)</div>
   <div class="price-row"><span class="price-big">730 €</span><span class="price-pp">gesamt · 2 Nächte · 91 €/Pers.</span></div>
   <div class="highlight">💡 Höchste Bewertung aller Unterkünfte (9,7). Klimaanlage, 3 Smart-TVs, Kaffee-Vollautomat, Boxspring-Betten. Haustiere willkommen.</div>
   <div class="pro-con">
@@ -406,12 +436,13 @@ h1 span{color:var(--accent)}
 </div>
 
 <!-- ⑥ BOPPARDER HAMM -->
-<div class="card">
+<div class="card separat">
   <div class="card-top">
     <div class="num">6</div>
     <div class="card-title-area">
       <div class="card-name">Ferienwohnungen Bopparder Hamm</div>
       <div class="card-loc">📍 Boppard · UNESCO-Welterbe Mittelrheintal · 20 km zu Koblenz</div>
+      <span class="typ-badge s">🚪 2 separate Wohnungen</span>
     </div>
     <div class="card-right">
       <div class="rating"><div class="rating-num">k.A.</div><div class="rating-lbl">Booking</div></div>
@@ -425,6 +456,7 @@ h1 span{color:var(--accent)}
     <div class="stat"><div class="stat-icon">🌊</div><div class="stat-val">Rhein</div><div class="stat-lbl">blick</div></div>
     <div class="stat"><div class="stat-icon">🍷</div><div class="stat-val">Weinbistro</div><div class="stat-lbl">vor Ort</div></div>
   </div>
+  <div class="update-bar">🕐 Zuletzt aktualisiert: 16. Mai 2026 · Preis: ca. 760 € (eigene Recherche)</div>
   <div class="price-row"><span class="price-big">760 €</span><span class="price-pp">gesamt · 2 Nächte · 95 €/Pers. · 2 Wohnungen à 4 Pers.</span></div>
   <div class="highlight">💡 UNESCO-Welterbe Mittelrheintal direkt vor der Tür – Rheinblick, Weinberge Bopparder Hamm, Sesselbahn 850 m, Rheinsteig & 7 Wandertraumschleifen ab Haus.</div>
   <div class="pro-con">
