@@ -1,610 +1,278 @@
-<!DOCTYPE html>
-<html lang="de">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Familientreffen 2026 – Unterkünfte</title>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
-<style>
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-:root{--bg:#0d1117;--surface:#161b27;--surface2:#1c2235;--border:#252d42;--text:#e2e5ef;--muted:#5c6585;--accent:#c9a96e;--success:#7ab5a0;--success-bg:rgba(122,181,160,0.07);--danger:#d97070;--danger-bg:rgba(217,112,112,0.07);--warn:#d4a843;--warn-bg:rgba(212,168,67,0.07)}
-body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);line-height:1.55;min-height:100vh}
-.site-header{background:linear-gradient(160deg,#0d1117 0%,#141926 60%,#0f1820 100%);border-bottom:1px solid var(--border);padding:2.5rem 1.5rem 1.75rem;text-align:center;position:relative;overflow:hidden}
-.site-header::before{content:'';position:absolute;top:-60px;left:50%;transform:translateX(-50%);width:400px;height:200px;background:radial-gradient(ellipse,rgba(201,169,110,0.1) 0%,transparent 70%);pointer-events:none}
-.eyebrow{font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);margin-bottom:.6rem;font-weight:500}
-h1{font-family:'Fraunces',serif;font-size:clamp(1.8rem,5vw,2.8rem);font-weight:300;color:#fff;letter-spacing:-.03em;margin-bottom:.4rem}
-h1 span{color:var(--accent)}
-.sub{font-size:.88rem;color:var(--muted)}
-.legende{max-width:720px;margin:1.25rem auto 0;display:flex;gap:16px;flex-wrap:wrap;justify-content:center}
-.legende-item{display:flex;align-items:center;gap:6px;font-size:.75rem;color:var(--muted)}
-.legende-dot{width:14px;height:3px;border-radius:2px;flex-shrink:0}
-.main{max-width:720px;margin:0 auto;padding:2rem 1.25rem 4rem;display:flex;flex-direction:column;gap:1.25rem}
-.card{background:var(--surface);border:1px solid var(--border);border-radius:14px;overflow:hidden}
-.card.gemeinsam{border-top:3px solid var(--success)}
-.card.separat{border-top:3px solid var(--warn)}
-.card-top{padding:1.1rem 1.25rem .9rem;border-bottom:1px solid var(--border);display:flex;gap:12px;align-items:flex-start}
-.num{min-width:26px;height:26px;border-radius:50%;background:var(--accent);color:#0d1117;font-size:.75rem;font-weight:600;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px}
-.card-title-area{flex:1;min-width:0}
-.card-name{font-family:'Fraunces',serif;font-size:1.1rem;font-weight:500;color:#fff;line-height:1.25;margin-bottom:2px}
-.card-loc{font-size:.78rem;color:var(--muted);margin-bottom:4px}
-.typ-badge{display:inline-flex;align-items:center;gap:4px;font-size:.68rem;font-weight:500;padding:2px 8px;border-radius:20px}
-.typ-badge.g{background:rgba(122,181,160,.1);color:var(--success);border:1px solid rgba(122,181,160,.2)}
-.typ-badge.s{background:rgba(212,168,67,.1);color:var(--warn);border:1px solid rgba(212,168,67,.2)}
-.card-right{display:flex;flex-direction:column;align-items:flex-end;gap:6px;flex-shrink:0}
-.rating{background:var(--success-bg);border:1px solid rgba(122,181,160,.2);border-radius:6px;padding:4px 9px;text-align:center}
-.rating-num{font-family:'Fraunces',serif;font-size:1.1rem;font-weight:500;color:var(--success);line-height:1}
-.rating-lbl{font-size:.6rem;color:var(--muted)}
-.book-btn{background:var(--accent);color:#0d1117;text-decoration:none;border-radius:6px;padding:.3rem .8rem;font-size:.75rem;font-weight:500;white-space:nowrap;transition:opacity .2s}
-.book-btn:hover{opacity:.85}
-.stats{display:flex;border-bottom:1px solid var(--border);overflow-x:auto}
-.stat{padding:.65rem .9rem;border-right:1px solid var(--border);text-align:center;flex-shrink:0}
-.stat:last-child{border-right:none}
-.stat-icon{font-size:.95rem}
-.stat-val{font-size:.85rem;font-weight:500;color:#fff;white-space:nowrap}
-.stat-lbl{font-size:.6rem;color:var(--muted);text-transform:uppercase;letter-spacing:.05em}
-.update-bar{padding:.4rem 1.25rem;border-bottom:1px solid var(--border);font-size:.68rem;color:var(--muted);display:flex;align-items:center;gap:5px;background:rgba(255,255,255,.015)}
-.price-row{background:var(--warn-bg);border-bottom:1px solid rgba(212,168,67,.12);padding:.6rem 1.25rem;display:flex;align-items:baseline;gap:8px}
-.price-big{font-family:'Fraunces',serif;font-size:1.2rem;font-weight:500;color:var(--warn)}
-.price-pp{font-size:.78rem;color:var(--muted)}
-.highlight{padding:.7rem 1.25rem;border-bottom:1px solid var(--border);font-size:.82rem;color:var(--accent);display:flex;gap:7px;align-items:flex-start;background:rgba(201,169,110,.04)}
-.pro-con{display:grid;grid-template-columns:1fr 1fr;border-bottom:1px solid var(--border)}
-.pro-box{background:var(--success-bg);border-right:1px solid var(--border);padding:.75rem 1rem}
-.con-box{background:var(--danger-bg);padding:.75rem 1rem}
-.box-title{font-size:.65rem;font-weight:500;text-transform:uppercase;letter-spacing:.1em;margin-bottom:.5rem}
-.pro-box .box-title{color:var(--success)}
-.con-box .box-title{color:var(--danger)}
-.item{font-size:.8rem;color:var(--text);padding:3px 0;border-bottom:1px solid rgba(255,255,255,.04);display:flex;gap:6px;line-height:1.35}
-.item:last-child{border-bottom:none}
-.dot{flex-shrink:0;font-size:.7rem;margin-top:2px}
-.reviews{display:grid;grid-template-columns:1fr 1fr;border-bottom:1px solid var(--border)}
-.rbox-pos{background:rgba(122,181,160,.04);border-right:1px solid var(--border);padding:.75rem 1rem}
-.rbox-neg{background:rgba(217,112,112,.04);padding:.75rem 1rem}
-.rbox-title{font-size:.65rem;font-weight:500;text-transform:uppercase;letter-spacing:.1em;margin-bottom:.5rem}
-.rbox-pos .rbox-title{color:var(--success)}
-.rbox-neg .rbox-title{color:var(--danger)}
-.ri{font-size:.78rem;color:var(--text);padding:3px 0;border-bottom:1px solid rgba(255,255,255,.04);display:flex;gap:5px;line-height:1.35}
-.ri:last-child{border-bottom:none}
-.tags-row{padding:.7rem 1.25rem;display:flex;flex-wrap:wrap;gap:4px;border-bottom:1px solid var(--border)}
-.tag{display:inline-block;padding:2px 8px;border-radius:20px;font-size:.71rem}
-.tg{background:rgba(122,181,160,.1);color:var(--success);border:1px solid rgba(122,181,160,.18)}
-.tr{background:rgba(217,112,112,.08);color:var(--danger);border:1px solid rgba(217,112,112,.14)}
-.tn{background:var(--surface2);color:var(--muted);border:1px solid var(--border)}
-.anfahrt{padding:.75rem 1.25rem}
-.anfahrt-lbl{font-size:.65rem;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);margin-bottom:.5rem}
-.ar{display:flex;align-items:center;gap:8px;margin-bottom:5px}
-.ar:last-child{margin-bottom:0}
-.adot{width:7px;height:7px;border-radius:50%;flex-shrink:0}
-.acity{font-size:.78rem;color:var(--text);width:68px;flex-shrink:0}
-.atrack{flex:1;background:var(--surface2);border-radius:3px;height:4px;overflow:hidden}
-.abar{height:100%;border-radius:3px}
-.akm{font-size:.78rem;font-weight:500;color:var(--text);width:48px;text-align:right;flex-shrink:0}
-.atime{font-size:.72rem;color:var(--muted);width:54px;text-align:right;flex-shrink:0}
-.site-footer{border-top:1px solid var(--border);padding:1.25rem;text-align:center;font-size:.75rem;color:var(--muted)}
-.site-footer a{color:var(--accent);text-decoration:none}
-@media(max-width:520px){.pro-con,.reviews{grid-template-columns:1fr}.pro-box,.rbox-pos{border-right:none;border-bottom:1px solid var(--border)}.card-right{flex-direction:row;align-items:center}}
+
+<!-- saved from url=(0062)file:///home/peterbenutzer/Downloads/unterkunft_matrix_v4.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><style>
+  .wrap{padding:1rem 0;font-size:13px}
+  .ttl{font-size:15px;font-weight:500;color:var(--color-text-primary);margin-bottom:4px}
+  .sub{font-size:12px;color:var(--color-text-secondary);margin-bottom:1.2rem}
+  .tbl{width:100%;border-collapse:collapse;table-layout:fixed}
+  .tbl th,.tbl td{border:0.5px solid var(--color-border-tertiary);padding:6px 7px;vertical-align:top}
+  .tbl thead th{background:var(--color-background-secondary);font-weight:500;color:var(--color-text-primary);font-size:11px;text-align:center}
+  .tbl thead th:first-child{text-align:left;width:110px}
+  .tbl tbody td:first-child{font-weight:500;color:var(--color-text-secondary);font-size:11px;white-space:nowrap}
+  .tbl tbody tr:nth-child(even){background:var(--color-background-secondary)}
+  .tag{display:inline-block;font-size:10px;padding:2px 5px;border-radius:4px;margin:1px;line-height:1.4}
+  .tp{background:#EAF3DE;color:#3B6D11}
+  .tc{background:#FCEBEB;color:#A32D2D}
+  .tn{background:#E6F1FB;color:#185FA5}
+  .tm{background:#FAEEDA;color:#854F0B}
+  .rb{display:inline-block;padding:2px 6px;border-radius:4px;font-size:11px;font-weight:500}
+  .rh{background:#EAF3DE;color:#3B6D11}
+  .rm{background:#FAEEDA;color:#854F0B}
+  .rl{background:#FCEBEB;color:#A32D2D}
+  .rec{font-size:10px;padding:2px 7px;border-radius:4px;background:#EEEDFE;color:#3C3489;font-weight:500}
+  .neu{font-size:10px;padding:2px 7px;border-radius:4px;background:#FAEEDA;color:#854F0B;font-weight:500}
+  .sum-row td{font-weight:500;background:var(--color-background-tertiary)!important}
+  .unt-h{font-size:11px;font-weight:500;color:var(--color-text-primary)}
+  .unt-s{font-size:10px;color:var(--color-text-secondary);display:block;margin-top:1px}
+  .link-btn{display:inline-flex;align-items:center;gap:3px;font-size:10px;padding:3px 7px;border-radius:4px;border:0.5px solid var(--color-border-secondary);color:var(--color-text-secondary);text-decoration:none;margin-top:4px;background:var(--color-background-primary)}
+  .link-btn:hover{background:var(--color-background-secondary)}
+  .dist-cell{font-size:11px;line-height:1.9}
+  .dist-row{display:flex;align-items:center;gap:4px;white-space:nowrap}
+  .city-lbl{font-size:10px;color:var(--color-text-secondary);min-width:62px}
+  .dist-val{font-weight:500;color:var(--color-text-primary)}
+  .dist-t{color:var(--color-text-secondary);font-size:10px}
+  .sec-head td{background:var(--color-background-tertiary)!important;font-size:10px;text-transform:uppercase;letter-spacing:.05em;color:var(--color-text-secondary);padding:4px 7px}
+  .price-conf{font-size:13px;font-weight:500;color:var(--color-text-primary)}
+  .price-unk{font-size:11px;color:var(--color-text-secondary);font-style:italic}
+  .pnote{font-size:10px;color:var(--color-text-secondary);display:block;margin-top:2px}
+  @media(prefers-color-scheme:dark){
+    .tp{background:#27500A;color:#C0DD97}.tc{background:#501313;color:#F7C1C1}
+    .tn{background:#0C447C;color:#B5D4F4}.tm{background:#633806;color:#FAC775}
+    .rh{background:#27500A;color:#C0DD97}.rm{background:#633806;color:#FAC775}
+    .rl{background:#501313;color:#F7C1C1}.rec{background:#3C3489;color:#CECBF6}
+    .neu{background:#633806;color:#FAC775}
+  }
 </style>
-</head>
-<body>
+</head><body><div class="wrap">
+  <h2 class="sr-only">Entscheidungsmatrix 6 Unterkünfte, 8 Personen, 11.–13. September 2026</h2>
+  <p class="ttl">Entscheidungsmatrix — 6 Unterkünfte im Vergleich</p>
+  <p class="sub">8 Personen · 11.–13. September 2026 · 2 Nächte · Preise nur dort angegeben, wo vom Anbieter bestätigt</p>
+  <div style="overflow-x:auto">
+  <table class="tbl">
+    <thead>
+      <tr>
+        <th>Kriterium</th>
+        <th>
+          <span class="unt-h">① Deluxe Flat</span>
+          <span class="unt-s">Bendorf b. Koblenz</span>
+          <a class="link-btn" href="https://www.booking.com/Share-MC66ZF0" target="_blank" style=""><i class="ti ti-external-link" aria-hidden="true"></i> Booking</a>
+        </th>
+        <th>
+          <span class="unt-h">③ FeWo Martina-Loch</span>
+          <span class="unt-s">Polch / Mosel</span>
+          <a class="link-btn" href="https://www.booking.com/Share-S9b2al" target="_blank"><i class="ti ti-external-link" aria-hidden="true"></i> Booking</a>
+        </th>
+        <th>
+          <span class="unt-h">④ A-ROSA Ifen Hotel</span>
+          <span class="unt-s">Hirschegg, Kleinwalsertal</span>
+          <a class="link-btn" href="https://www.booking.com/Share-QFP0V0" target="_blank"><i class="ti ti-external-link" aria-hidden="true"></i> Booking</a>
+        </th>
+        <th>
+          <span class="unt-h">⑧ Waldhaus Bongard</span>
+          <span class="unt-s">Bongard, Vulkaneifel</span>
+          <a class="link-btn" href="https://www.booking.com/Share-NfkEINA" target="_blank" style=""><i class="ti ti-external-link" aria-hidden="true"></i> Booking</a>
+        </th>
+        <th>
+          <span class="unt-h">⑨ Appartement Zell (Mosel)</span>
+          <span class="unt-s">Zell (Mosel)</span>
+          <a class="link-btn" href="https://link.holidu.com/ozXN7x" target="_blank" style=""><i class="ti ti-external-link" aria-hidden="true"></i> Holidu</a>
+          <span class="neu" style="display:inline-block;margin-top:4px">neu</span>
+        </th>
+        <th>
+          <span class="unt-h">⑩ FeWo Bopparder Hamm</span>
+          <span class="unt-s">Boppard / Rhein</span>
+          <a class="link-btn" href="https://www.booking.com/Share-gtxUTBO" target="_blank" style=""><i class="ti ti-external-link" aria-hidden="true"></i> Booking</a>
+          <span class="neu" style="display:inline-block;margin-top:4px">neu</span>
+        </th>
+      </tr>
+    </thead>
+    <tbody>
 
-<header class="site-header">
-  <div class="eyebrow">11.–13. September 2026 · 8 Personen</div>
-  <h1><span>Familientreffen</span> 2026</h1>
-  <p class="sub">Unterkünfte im Vergleich · Stand: 19.05.2026</p>
-  <div class="legende">
-    <div class="legende-item"><div class="legende-dot" style="background:var(--success);"></div> Alle gemeinsam unter einem Dach</div>
-    <div class="legende-item"><div class="legende-dot" style="background:var(--warn);"></div> Separate Zimmer / Wohnungen</div>
-  </div>
-</header>
+      <tr class="sec-head"><td colspan="7">Preis (2 Nächte, 8 Personen)</td></tr>
+      <tr>
+        <td>Gesamtpreis</td>
+        <td style="text-align:center">
+          <span class="price-conf">630 €</span>
+          <span class="pnote">Wohnung 120m²</span>
+        </td>
+        <td style="text-align:center">
+          <span class="price-conf">590 €</span>
+          <span class="pnote">⚠ 4 Zimmer — zusammenhängend prüfen</span>
+        </td>
+        <td style="text-align:center">
+          <span class="price-conf">620 €</span>
+          <span class="pnote">Hotel, mehrere Zimmer</span>
+        </td>
+        <td style="text-align:center">
+          <span class="price-conf">485 €</span>
+          <span class="pnote">ganzes Haus, 8 Pers.</span>
+        </td>
+        <td style="text-align:center">
+          <span class="price-conf">720 €</span>
+          <span class="pnote">2 zusammengelegte Apartments</span>
+        </td>
+        <td style="text-align:center">
+          <span class="price-conf">760 €</span>
+          <span class="pnote">2 separate Einheiten</span>
+        </td>
+      </tr>
+      <tr>
+        <td>Preis / Person</td>
+        <td style="text-align:center"><span class="rb rm">~79 €</span></td>
+        <td style="text-align:center"><span class="rb rm">~74 €</span></td>
+        <td style="text-align:center"><span class="rb rm">~78 €</span></td>
+        <td style="text-align:center"><span class="rb rh">~61 €</span></td>
+        <td style="text-align:center"><span class="rb rl">~90 €</span></td>
+        <td style="text-align:center"><span class="rb rl">~95 €</span></td>
+      </tr>
 
-<main class="main">
+      <tr class="sec-head"><td colspan="7">Fahrstrecke (Auto, ca.)</td></tr>
+      <tr>
+        <td>🚗 ab Duisburg</td>
+        <td class="dist-cell"><div class="dist-row"><span class="city-lbl">Duisburg</span><span class="dist-val">~195 km</span><span class="dist-t">ca. 2:00 h</span></div></td>
+        <td class="dist-cell"><div class="dist-row"><span class="city-lbl">Duisburg</span><span class="dist-val">~215 km</span><span class="dist-t">ca. 2:15 h</span></div></td>
+        <td class="dist-cell"><div class="dist-row"><span class="city-lbl">Duisburg</span><span class="dist-val">~560 km</span><span class="dist-t">ca. 5:15 h</span></div></td>
+        <td class="dist-cell"><div class="dist-row"><span class="city-lbl">Duisburg</span><span class="dist-val">~165 km</span><span class="dist-t">ca. 1:45 h</span></div></td>
+        <td class="dist-cell"><div class="dist-row"><span class="city-lbl">Duisburg</span><span class="dist-val">~245 km</span><span class="dist-t">ca. 2:30 h</span></div></td>
+        <td class="dist-cell"><div class="dist-row"><span class="city-lbl">Duisburg</span><span class="dist-val">~195 km</span><span class="dist-t">ca. 2:00 h</span></div></td>
+      </tr>
+      <tr>
+        <td>🚗 ab Marburg</td>
+        <td class="dist-cell"><div class="dist-row"><span class="city-lbl">Marburg</span><span class="dist-val">~130 km</span><span class="dist-t">ca. 1:30 h</span></div></td>
+        <td class="dist-cell"><div class="dist-row"><span class="city-lbl">Marburg</span><span class="dist-val">~155 km</span><span class="dist-t">ca. 1:45 h</span></div></td>
+        <td class="dist-cell"><div class="dist-row"><span class="city-lbl">Marburg</span><span class="dist-val">~510 km</span><span class="dist-t">ca. 5:00 h</span></div></td>
+        <td class="dist-cell"><div class="dist-row"><span class="city-lbl">Marburg</span><span class="dist-val">~170 km</span><span class="dist-t">ca. 2:00 h</span></div></td>
+        <td class="dist-cell"><div class="dist-row"><span class="city-lbl">Marburg</span><span class="dist-val">~200 km</span><span class="dist-t">ca. 2:15 h</span></div></td>
+        <td class="dist-cell"><div class="dist-row"><span class="city-lbl">Marburg</span><span class="dist-val">~130 km</span><span class="dist-t">ca. 1:30 h</span></div></td>
+      </tr>
+      <tr>
+        <td>🚗 ab Ettlingen</td>
+        <td class="dist-cell"><div class="dist-row"><span class="city-lbl">Ettlingen</span><span class="dist-val">~230 km</span><span class="dist-t">ca. 2:15 h</span></div></td>
+        <td class="dist-cell"><div class="dist-row"><span class="city-lbl">Ettlingen</span><span class="dist-val">~245 km</span><span class="dist-t">ca. 2:30 h</span></div></td>
+        <td class="dist-cell"><div class="dist-row"><span class="city-lbl">Ettlingen</span><span class="dist-val">~190 km</span><span class="dist-t">ca. 1:45 h</span></div></td>
+        <td class="dist-cell"><div class="dist-row"><span class="city-lbl">Ettlingen</span><span class="dist-val">~290 km</span><span class="dist-t">ca. 3:00 h</span></div></td>
+        <td class="dist-cell"><div class="dist-row"><span class="city-lbl">Ettlingen</span><span class="dist-val">~280 km</span><span class="dist-t">ca. 2:45 h</span></div></td>
+        <td class="dist-cell"><div class="dist-row"><span class="city-lbl">Ettlingen</span><span class="dist-val">~230 km</span><span class="dist-t">ca. 2:15 h</span></div></td>
+      </tr>
+      <tr>
+        <td>🚗 ab Kaufbeuren</td>
+        <td class="dist-cell"><div class="dist-row"><span class="city-lbl">Kaufbeuren</span><span class="dist-val">~385 km</span><span class="dist-t">ca. 3:45 h</span></div></td>
+        <td class="dist-cell"><div class="dist-row"><span class="city-lbl">Kaufbeuren</span><span class="dist-val">~400 km</span><span class="dist-t">ca. 4:00 h</span></div></td>
+        <td class="dist-cell"><div class="dist-row"><span class="city-lbl">Kaufbeuren</span><span class="dist-val">~110 km</span><span class="dist-t">ca. 1:10 h</span></div></td>
+        <td class="dist-cell"><div class="dist-row"><span class="city-lbl">Kaufbeuren</span><span class="dist-val">~440 km</span><span class="dist-t">ca. 4:30 h</span></div></td>
+        <td class="dist-cell"><div class="dist-row"><span class="city-lbl">Kaufbeuren</span><span class="dist-val">~430 km</span><span class="dist-t">ca. 4:15 h</span></div></td>
+        <td class="dist-cell"><div class="dist-row"><span class="city-lbl">Kaufbeuren</span><span class="dist-val">~385 km</span><span class="dist-t">ca. 3:45 h</span></div></td>
+      </tr>
 
-<!-- ① DELUXE FLAT BENDORF -->
-<div class="card gemeinsam">
-  <div class="card-top">
-    <div class="num">1</div>
-    <div class="card-title-area">
-      <div class="card-name">Deluxe Flat – PS4, Parken, Netflix</div>
-      <div class="card-loc">📍 Bendorf · Rheinland-Pfalz · 12 km zu Koblenz</div>
-      <span class="typ-badge g">🏠 Gemeinsame Unterkunft</span>
-    </div>
-    <div class="card-right">
-      <div class="rating"><div class="rating-num">9,6</div><div class="rating-lbl">Booking</div></div>
-      <a class="book-btn" href="https://www.booking.com/hotel/de/deluxe-flat-ps4-parken-netflix-zentral.de.html" target="_blank">Buchen →</a>
-    </div>
+      <tr class="sec-head"><td colspan="7">Unterkunft</td></tr>
+      <tr>
+        <td>Typ / Größe</td>
+        <td style="text-align:center"><span class="tag tn">Wohnung 120m²</span></td>
+        <td style="text-align:center"><span class="tag tn">Ferienwohnung</span></td>
+        <td style="text-align:center"><span class="tag tn">5★ Hotel</span></td>
+        <td style="text-align:center"><span class="tag tn">Ferienhaus, 4 SZ</span></td>
+        <td style="text-align:center"><span class="tag tn">2 Apartments, 4 SZ</span></td>
+        <td style="text-align:center"><span class="tag tn">2 Ferienwohnungen</span></td>
+      </tr>
+      <tr>
+        <td>Kapazität 8 Pers.</td>
+        <td style="text-align:center"><span class="tag tp">✓ 8 Pers.</span></td>
+        <td style="text-align:center"><span class="tag tc">⚠ unklar — anfragen</span></td>
+        <td style="text-align:center"><span class="tag tp">✓ Zimmer buchbar</span></td>
+        <td style="text-align:center"><span class="tag tp">✓ 8 Pers. (ganzes Haus)</span></td>
+        <td style="text-align:center"><span class="tag tp">✓ bis 14 Pers.</span></td>
+        <td style="text-align:center"><span class="tag tm">⚠ 2 Einheiten, getrennt</span></td>
+      </tr>
+      <tr>
+        <td>Gästebewertung</td>
+        <td style="text-align:center"><span class="rb rh">9,6 / 10</span></td>
+        <td style="text-align:center"><span class="rb rm">~9,0 / 10</span></td>
+        <td style="text-align:center"><span class="rb rh">8,8 / 10</span></td>
+        <td style="text-align:center"><span class="rb rh">9,6 / 10</span></td>
+        <td style="text-align:center"><span class="rb rm">8,5 / 10</span></td>
+        <td style="text-align:center"><span class="rb rn">nicht abrufbar</span></td>
+      </tr>
+
+      <tr class="sec-head"><td colspan="7">Ausstattung &amp; Extras</td></tr>
+      <tr>
+        <td>Küche</td>
+        <td style="text-align:center"><span class="tag tp">✓ voll</span></td>
+        <td style="text-align:center"><span class="tag tp">✓ voll</span></td>
+        <td style="text-align:center"><span class="tag tc">✗ nur Restaurant</span></td>
+        <td style="text-align:center"><span class="tag tp">✓ voll</span></td>
+        <td style="text-align:center"><span class="tag tp">✓ voll, Geschirrspüler</span></td>
+        <td style="text-align:center"><span class="tag tn">unklar</span></td>
+      </tr>
+      <tr>
+        <td>Parken</td>
+        <td style="text-align:center"><span class="tag tp">kostenlos</span></td>
+        <td style="text-align:center"><span class="tag tp">kostenlos</span></td>
+        <td style="text-align:center"><span class="tag tc">Garage ~12 €/Tag</span></td>
+        <td style="text-align:center"><span class="tag tp">kostenlos</span></td>
+        <td style="text-align:center"><span class="tag tp">Garage vorhanden</span></td>
+        <td style="text-align:center"><span class="tag tn">unklar</span></td>
+      </tr>
+      <tr>
+        <td>Außenbereich</td>
+        <td style="text-align:center"><span class="tag tc">✗ keiner</span></td>
+        <td style="text-align:center"><span class="tag tc">✗ keiner bekannt</span></td>
+        <td style="text-align:center"><span class="tag tp">✓ Infinity-Pool, Spa</span></td>
+        <td style="text-align:center"><span class="tag tp">✓ Garten, Terrasse, Wald</span></td>
+        <td style="text-align:center"><span class="tag tp">✓ Terrasse, Moselblick</span></td>
+        <td style="text-align:center"><span class="tag tp">✓ Rheinblick, Bopparder Hamm</span></td>
+      </tr>
+      <tr>
+        <td>Lage / Highlights</td>
+        <td style="text-align:center"><span class="tag tn">Koblenz nah, Bahn</span></td>
+        <td style="text-align:center"><span class="tag tn">Mosel-Region</span></td>
+        <td style="text-align:center"><span class="tag tp">Alpen, Ski, Spa</span></td>
+        <td style="text-align:center"><span class="tag tp">Vulkaneifel, Nürburgring nah</span></td>
+        <td style="text-align:center"><span class="tag tp">Mosel, Altstadt 30m, Promenade</span></td>
+        <td style="text-align:center"><span class="tag tp">Rhein, Weingebiet, UNESCO</span></td>
+      </tr>
+      <tr>
+        <td>Haustiere</td>
+        <td style="text-align:center"><span class="tag tc">✗</span></td>
+        <td style="text-align:center"><span class="tag tc">✗</span></td>
+        <td style="text-align:center"><span class="tag tp">✓ (30 €/Tag)</span></td>
+        <td style="text-align:center"><span class="tag tp">✓ (10 €/Hund/Tag)</span></td>
+        <td style="text-align:center"><span class="tag tn">unklar</span></td>
+        <td style="text-align:center"><span class="tag tn">unklar</span></td>
+      </tr>
+
+      <tr class="sec-head"><td colspan="7">Bewertung</td></tr>
+      <tr>
+        <td>Pro</td>
+        <td><span class="tag tp">9,6 Bewertung</span><span class="tag tp">PS4/Netflix</span><span class="tag tp">Koblenz nah</span><span class="tag tp">Preis bestätigt</span></td>
+        <td><span class="tag tp">günstigster Preis</span><span class="tag tp">Mosel-Lage</span></td>
+        <td><span class="tag tp">5★ Komfort</span><span class="tag tp">Spa &amp; Pool</span><span class="tag tp">nah Kaufbeuren</span></td>
+        <td><span class="tag tp">günstigste/Person</span><span class="tag tp">9,6 Bewertung</span><span class="tag tp">ganzes Haus</span><span class="tag tp">Garten &amp; Kamin</span></td>
+        <td><span class="tag tp">bis 14 Pers.</span><span class="tag tp">Altstadt &amp; Mosel direkt</span><span class="tag tp">großzügig</span></td>
+        <td><span class="tag tp">Rheinblick</span><span class="tag tp">UNESCO Mittelrheintal</span><span class="tag tp">Wanderwege</span></td>
+      </tr>
+      <tr>
+        <td>Contra</td>
+        <td><span class="tag tc">kein Garten</span><span class="tag tc">2 Etagen, kein Lift</span><span class="tag tc">keine Haustiere</span></td>
+        <td><span class="tag tc">Kapazität unklar</span><span class="tag tc">evtl. getrennte Einheiten</span></td>
+        <td><span class="tag tc">sehr teuer/Person</span><span class="tag tc">Garage 12 €/Tag</span><span class="tag tc">keine Küche</span><span class="tag tc">weit für Duisburg/Marburg</span></td>
+        <td><span class="tag tc">weit für Kaufbeuren &amp; Ettlingen</span><span class="tag tc">keine Großstadt nah</span></td>
+        <td><span class="tag tc">teuerste/Person</span><span class="tag tc">Bewertung nur 8,5</span><span class="tag tc">2 getrennte Einheiten</span></td>
+        <td><span class="tag tc">teuerster Preis</span><span class="tag tc">Bewertung nicht abrufbar</span><span class="tag tc">2 getrennte Einheiten</span><span class="tag tc">Parken unklar</span></td>
+      </tr>
+      <tr class="sum-row">
+        <td>Gesamteignung</td>
+        <td style="text-align:center"><span class="rb rh">★★★★☆</span></td>
+        <td style="text-align:center"><span class="rb rl">★★☆☆☆</span><br><span style="font-size:10px;color:var(--color-text-secondary)">Kapazität zuerst klären</span></td>
+        <td style="text-align:center"><span class="rb rm">★★★☆☆</span><br><span style="font-size:10px;color:var(--color-text-secondary)">nur für Kaufbeuren attraktiv</span></td>
+        <td style="text-align:center"><span class="rb rh">★★★★★</span> <span class="rec">Empfehlung</span></td>
+        <td style="text-align:center"><span class="rb rh">★★★★☆</span><br><span style="font-size:10px;color:var(--color-text-secondary)">gut, aber teuerste/Person</span></td>
+        <td style="text-align:center"><span class="rb rm">★★★☆☆</span><br><span style="font-size:10px;color:var(--color-text-secondary)">zu wenig Infos</span></td>
+      </tr>
+    </tbody>
+  </table>
   </div>
-  <div class="stats">
-    <div class="stat"><div class="stat-icon">👥</div><div class="stat-val">8</div><div class="stat-lbl">Pers.</div></div>
-    <div class="stat"><div class="stat-icon">🛏️</div><div class="stat-val">3 Zi.</div><div class="stat-lbl">Schlaf</div></div>
-    <div class="stat"><div class="stat-icon">🚿</div><div class="stat-val">2 Bäder</div><div class="stat-lbl">Bad</div></div>
-    <div class="stat"><div class="stat-icon">🏠</div><div class="stat-val">2 Etagen</div><div class="stat-lbl">Typ</div></div>
-    <div class="stat"><div class="stat-icon">🎮</div><div class="stat-val">PS4+Netflix</div><div class="stat-lbl">Extra</div></div>
-  </div>
-  <div class="update-bar">🕐 Zuletzt aktualisiert: 18. Mai 2026 · Preis: ca. 640 € (eigene Recherche)</div>
-  <div class="price-row"><span class="price-big">640 €</span><span class="price-pp">gesamt · 2 Nächte · 80 €/Pers.</span></div>
-  <div class="highlight">💡 Modern auf 2 Etagen, PS4 & Netflix inklusive, 2 Bäder, Schlüsselsafe. Koblenz 12 km, Burg Eltz 20 km.</div>
-  <div class="pro-con">
-    <div class="pro-box"><div class="box-title">✓ Vorteile</div>
-      <div class="item"><span class="dot">✦</span> 9,6/10 – hervorragend bewertet</div>
-      <div class="item"><span class="dot">✦</span> 2 vollwertige Bäder für 8 Pers.</div>
-      <div class="item"><span class="dot">✦</span> PS4, Netflix, Streaming inkl.</div>
-      <div class="item"><span class="dot">✦</span> Bettwäsche & Handtücher inkl.</div>
-      <div class="item"><span class="dot">✦</span> Gratis Parken, flexibler Check-in</div>
-    </div>
-    <div class="con-box"><div class="box-title">✗ Nachteile</div>
-      <div class="item"><span class="dot">✦</span> Nur 3 Schlafzimmer für 8 Pers.</div>
-      <div class="item"><span class="dot">✦</span> Kein Garten / Außenbereich</div>
-      <div class="item"><span class="dot">✦</span> Ruhezeit ab 22 Uhr, keine Feiern</div>
-      <div class="item"><span class="dot">✦</span> Keine Haustiere</div>
-    </div>
-  </div>
-  <div class="reviews">
-    <div class="rbox-pos"><div class="rbox-title">👍 Gäste loben</div>
-      <div class="ri"><span>✦</span> Liebevoll eingerichtet, alles durchdacht</div>
-      <div class="ri"><span>✦</span> QR-Code Erklärvideos für alle Geräte</div>
-      <div class="ri"><span>✦</span> Sehr sauber, sofort wohlfühlen</div>
-    </div>
-    <div class="rbox-neg"><div class="rbox-title">👎 Gäste bemängeln</div>
-      <div class="ri"><span>✦</span> Ruhezeit schränkt Abende ein</div>
-      <div class="ri"><span>✦</span> Kein gemeinsamer Außenbereich</div>
-    </div>
-  </div>
-  <div class="tags-row">
-    <span class="tag tg">PS4 & Netflix</span><span class="tag tg">2 Bäder</span><span class="tag tg">Bettwäsche inkl.</span><span class="tag tg">Handtücher inkl.</span><span class="tag tg">Gratis Parken</span><span class="tag tg">Koblenz 12 km</span><span class="tag tr">Kein Garten</span><span class="tag tr">Keine Haustiere</span><span class="tag tn">Ruhezeit 22 Uhr</span>
-  </div>
-  <div class="anfahrt"><div class="anfahrt-lbl">🚗 Anfahrt</div>
-    <div class="ar"><div class="adot" style="background:#378ADD;"></div><div class="acity">Duisburg</div><div class="atrack"><div class="abar" style="width:46%;background:#378ADD;"></div></div><div class="akm">185 km</div><div class="atime">ca. 2:00 h</div></div>
-    <div class="ar"><div class="adot" style="background:#1D9E75;"></div><div class="acity">Marburg</div><div class="atrack"><div class="abar" style="width:30%;background:#1D9E75;"></div></div><div class="akm">120 km</div><div class="atime">ca. 1:30 h</div></div>
-    <div class="ar"><div class="adot" style="background:#D85A30;"></div><div class="acity">Ettlingen</div><div class="atrack"><div class="abar" style="width:65%;background:#D85A30;"></div></div><div class="akm">260 km</div><div class="atime">ca. 2:45 h</div></div>
-    <div class="ar"><div class="adot" style="background:#BA7517;"></div><div class="acity">Kaufbeuren</div><div class="atrack"><div class="abar" style="width:100%;background:#BA7517;"></div></div><div class="akm">510 km</div><div class="atime">ca. 5:00 h</div></div>
+  <div style="margin-top:1.2rem;padding:8px 12px;border:0.5px solid var(--color-border-secondary);border-radius:var(--border-radius-md);background:var(--color-background-secondary);font-size:11px;color:var(--color-text-secondary)">
+    ⚠ Preise vom Nutzer mitgeteilt und als korrekt übernommen. Gästebewertungen und Ausstattungsmerkmale aus öffentlich zugänglichen Quellen — bei Booking.com-Einträgen war kein Direktzugriff möglich. Entfernungen ca., ohne Gewähr.
   </div>
 </div>
-
-<!-- ② FERIENHAUS ZERF -->
-<div class="card gemeinsam">
-  <div class="card-top">
-    <div class="num">2</div>
-    <div class="card-title-area">
-      <div class="card-name">Ferienhaus Zerf – Barrierefrei</div>
-      <div class="card-loc">📍 Zerf · Hunsrück · 20 km zu Trier</div>
-      <span class="typ-badge g">🏠 Gemeinsame Unterkunft</span>
-    </div>
-    <div class="card-right">
-      <div class="rating"><div class="rating-num">9,5</div><div class="rating-lbl">100+ Bew.</div></div>
-      <a class="book-btn" href="https://t1p.de/507s4" target="_blank">Buchen →</a>
-    </div>
-  </div>
-  <div class="stats">
-    <div class="stat"><div class="stat-icon">👥</div><div class="stat-val">10</div><div class="stat-lbl">Pers.</div></div>
-    <div class="stat"><div class="stat-icon">🛏️</div><div class="stat-val">4 Zi.</div><div class="stat-lbl">Schlaf</div></div>
-    <div class="stat"><div class="stat-icon">🚿</div><div class="stat-val">2 Bäder</div><div class="stat-lbl">Bad</div></div>
-    <div class="stat"><div class="stat-icon">📐</div><div class="stat-val">226 m²</div><div class="stat-lbl">Fläche</div></div>
-    <div class="stat"><div class="stat-icon">♿</div><div class="stat-val">Aufzug</div><div class="stat-lbl">Barrierefrei</div></div>
-  </div>
-  <div class="update-bar">🕐 Zuletzt aktualisiert: 18. Mai 2026 · Preis: ca. 730 € (eigene Recherche)</div>
-  <div class="price-row"><span class="price-big">730 €</span><span class="price-pp">gesamt · 2 Nächte · 91 €/Pers.</span></div>
-  <div class="highlight">💡 226 m², vollständig barrierefrei mit Aufzug, Profiküche, großer Garten & Grill. Größte Unterkunft – ideal für Gruppen mit Mobilitätsbedarf.</div>
-  <div class="pro-con">
-    <div class="pro-box"><div class="box-title">✓ Vorteile</div>
-      <div class="item"><span class="dot">✦</span> Vollständig barrierefrei (Aufzug, rollstuhlgerecht)</div>
-      <div class="item"><span class="dot">✦</span> 226 m² – größte Unterkunft im Vergleich</div>
-      <div class="item"><span class="dot">✦</span> Profiküche & Gastronomie-Spülmaschine</div>
-      <div class="item"><span class="dot">✦</span> Großer Garten, Terrasse, Grill, Kicker</div>
-      <div class="item"><span class="dot">✦</span> Haustiere erlaubt (2 Hunde, 7,50 €/Tag)</div>
-    </div>
-    <div class="con-box"><div class="box-title">✗ Nachteile</div>
-      <div class="item"><span class="dot">✦</span> Handtücher selbst mitbringen</div>
-      <div class="item"><span class="dot">✦</span> Preis nicht direkt buchbar – Anfrage</div>
-      <div class="item"><span class="dot">✦</span> Check-out bis 12:00 Uhr</div>
-      <div class="item"><span class="dot">✦</span> Nicht direkt an Mosel / Gewässer</div>
-    </div>
-  </div>
-  <div class="reviews">
-    <div class="rbox-pos"><div class="rbox-title">👍 Gäste loben</div>
-      <div class="ri"><span>✦</span> Barrierefreiheit ausdrücklich gelobt</div>
-      <div class="ri"><span>✦</span> Riesig viel Platz – echtes Wohngefühl</div>
-      <div class="ri"><span>✦</span> Sauberkeit durchgehend top</div>
-    </div>
-    <div class="rbox-neg"><div class="rbox-title">👎 Gäste bemängeln</div>
-      <div class="ri"><span>✦</span> Handtücher nicht inkl. – Überraschung</div>
-      <div class="ri"><span>✦</span> Buchungsprozess umständlich</div>
-    </div>
-  </div>
-  <div class="tags-row">
-    <span class="tag tg">Barrierefrei ♿</span><span class="tag tg">Aufzug</span><span class="tag tg">226 m²</span><span class="tag tg">Großer Garten</span><span class="tag tg">Grill</span><span class="tag tg">Kicker</span><span class="tag tg">Haustiere ✓</span><span class="tag tg">Bettwäsche inkl.</span><span class="tag tg">Trier 20 km</span><span class="tag tr">Handtücher selbst</span><span class="tag tn">Rauchen verboten</span>
-  </div>
-  <div class="anfahrt"><div class="anfahrt-lbl">🚗 Anfahrt</div>
-    <div class="ar"><div class="adot" style="background:#378ADD;"></div><div class="acity">Duisburg</div><div class="atrack"><div class="abar" style="width:42%;background:#378ADD;"></div></div><div class="akm">220 km</div><div class="atime">ca. 2:30 h</div></div>
-    <div class="ar"><div class="adot" style="background:#1D9E75;"></div><div class="acity">Marburg</div><div class="atrack"><div class="abar" style="width:31%;background:#1D9E75;"></div></div><div class="akm">165 km</div><div class="atime">ca. 2:00 h</div></div>
-    <div class="ar"><div class="adot" style="background:#D85A30;"></div><div class="acity">Ettlingen</div><div class="atrack"><div class="abar" style="width:45%;background:#D85A30;"></div></div><div class="akm">240 km</div><div class="atime">ca. 2:45 h</div></div>
-    <div class="ar"><div class="adot" style="background:#BA7517;"></div><div class="acity">Kaufbeuren</div><div class="atrack"><div class="abar" style="width:100%;background:#BA7517;"></div></div><div class="akm">530 km</div><div class="atime">ca. 5:15 h</div></div>
-  </div>
-</div>
-
-<!-- ③ BAUERNSCHMAUSE POLCH -->
-<div class="card separat">
-  <div class="card-top">
-    <div class="num">3</div>
-    <div class="card-title-area">
-      <div class="card-name">Ferienwohnungen Bauernschmause</div>
-      <div class="card-loc">📍 Polch · Maifeld · 12 km zur Mosel</div>
-      <span class="typ-badge s">🚪 Separate Zimmer</span>
-    </div>
-    <div class="card-right">
-      <div class="rating"><div class="rating-num">8,0</div><div class="rating-lbl">Booking</div></div>
-      <a class="book-btn" href="https://www.booking.com/Share-S9b2al" target="_blank">Buchen →</a>
-    </div>
-  </div>
-  <div class="stats">
-    <div class="stat"><div class="stat-icon">👥</div><div class="stat-val">8</div><div class="stat-lbl">Pers.</div></div>
-    <div class="stat"><div class="stat-icon">🛏️</div><div class="stat-val">4 sep.</div><div class="stat-lbl">Zimmer</div></div>
-    <div class="stat"><div class="stat-icon">🚿</div><div class="stat-val">4 Bäder</div><div class="stat-lbl">Bad</div></div>
-    <div class="stat"><div class="stat-icon">🏚️</div><div class="stat-val">1892</div><div class="stat-lbl">Baujahr</div></div>
-    <div class="stat"><div class="stat-icon">☕</div><div class="stat-val">Café</div><div class="stat-lbl">vor Ort</div></div>
-  </div>
-  <div class="update-bar">🕐 Zuletzt aktualisiert: 18. Mai 2026 · Preis: ca. 600 € (eigene Recherche) · nur Barzahlung</div>
-  <div class="price-row"><span class="price-big">600 €</span><span class="price-pp">gesamt · 2 Nächte · 75 €/Pers. · nur Barzahlung</span></div>
-  <div class="highlight">💡 Historisches Bauernhaus (1892) mit Bauernhofcafé. Günstigste Option – Burg Eltz 15 km, Koblenz 21 km.</div>
-  <div class="pro-con">
-    <div class="pro-box"><div class="box-title">✓ Vorteile</div>
-      <div class="item"><span class="dot">✦</span> Günstigste Unterkunft (75 €/Pers.)</div>
-      <div class="item"><span class="dot">✦</span> Bauernhofcafé & Frühstück auf Anfrage</div>
-      <div class="item"><span class="dot">✦</span> Bettwäsche & Handtücher inkl.</div>
-      <div class="item"><span class="dot">✦</span> Garten & Grill, authentisches Flair</div>
-      <div class="item"><span class="dot">✦</span> Burg Eltz 15 km, Mosel 12 km</div>
-    </div>
-    <div class="con-box"><div class="box-title">✗ Nachteile</div>
-      <div class="item"><span class="dot">✦</span> 4 sep. Zimmer – nicht gemeinsam</div>
-      <div class="item"><span class="dot">✦</span> Nur Barzahlung</div>
-      <div class="item"><span class="dot">✦</span> Keine Haustiere</div>
-      <div class="item"><span class="dot">✦</span> Ruhezeit ab 22 Uhr</div>
-    </div>
-  </div>
-  <div class="reviews">
-    <div class="rbox-pos"><div class="rbox-title">👍 Gäste loben</div>
-      <div class="ri"><span>✦</span> Herzliche Gastgeber – immer erwähnt</div>
-      <div class="ri"><span>✦</span> Tolles Frühstück auf Anfrage</div>
-      <div class="ri"><span>✦</span> Liebevoll & authentisch eingerichtet</div>
-    </div>
-    <div class="rbox-neg"><div class="rbox-title">👎 Gäste bemängeln</div>
-      <div class="ri"><span>✦</span> Nur Barzahlung – ungewohnt</div>
-      <div class="ri"><span>✦</span> Separate Zimmer, kein Gruppenhaus</div>
-    </div>
-  </div>
-  <div class="tags-row">
-    <span class="tag tg">Bauernhofcafé</span><span class="tag tg">Garten & Grill</span><span class="tag tg">Bettwäsche inkl.</span><span class="tag tg">Handtücher inkl.</span><span class="tag tg">Burg Eltz 15 km</span><span class="tag tg">Mosel 12 km</span><span class="tag tr">Nur Barzahlung</span><span class="tag tr">Keine Haustiere</span><span class="tag tr">Separate Zimmer</span><span class="tag tn">Ruhezeit 22 Uhr</span>
-  </div>
-  <div class="anfahrt"><div class="anfahrt-lbl">🚗 Anfahrt</div>
-    <div class="ar"><div class="adot" style="background:#378ADD;"></div><div class="acity">Duisburg</div><div class="atrack"><div class="abar" style="width:36%;background:#378ADD;"></div></div><div class="akm">190 km</div><div class="atime">ca. 2:00 h</div></div>
-    <div class="ar"><div class="adot" style="background:#1D9E75;"></div><div class="acity">Marburg</div><div class="atrack"><div class="abar" style="width:24%;background:#1D9E75;"></div></div><div class="akm">125 km</div><div class="atime">ca. 1:30 h</div></div>
-    <div class="ar"><div class="adot" style="background:#D85A30;"></div><div class="acity">Ettlingen</div><div class="atrack"><div class="abar" style="width:52%;background:#D85A30;"></div></div><div class="akm">270 km</div><div class="atime">ca. 2:45 h</div></div>
-    <div class="ar"><div class="adot" style="background:#BA7517;"></div><div class="acity">Kaufbeuren</div><div class="atrack"><div class="abar" style="width:100%;background:#BA7517;"></div></div><div class="akm">520 km</div><div class="atime">ca. 5:00 h</div></div>
-  </div>
-</div>
-
-<!-- ④ HOTEL IFEN WIESLOCH -->
-<div class="card separat">
-  <div class="card-top">
-    <div class="num">4</div>
-    <div class="card-title-area">
-      <div class="card-name">Hotel Ifen Wiesloch</div>
-      <div class="card-loc">📍 Wiesloch · Baden-Württemberg · 18 km zu Heidelberg</div>
-      <span class="typ-badge s">🚪 Separate Hotelzimmer</span>
-    </div>
-    <div class="card-right">
-      <div class="rating"><div class="rating-num">8,1</div><div class="rating-lbl">272 Bew.</div></div>
-      <a class="book-btn" href="https://www.booking.com/hotel/de/ifen.de.html" target="_blank">Buchen →</a>
-    </div>
-  </div>
-  <div class="stats">
-    <div class="stat"><div class="stat-icon">👥</div><div class="stat-val">8</div><div class="stat-lbl">Pers.</div></div>
-    <div class="stat"><div class="stat-icon">🛏️</div><div class="stat-val">4 Zi.</div><div class="stat-lbl">Doppel</div></div>
-    <div class="stat"><div class="stat-icon">🏨</div><div class="stat-val">3★</div><div class="stat-lbl">Hotel</div></div>
-    <div class="stat"><div class="stat-icon">🍳</div><div class="stat-val">Frühstück</div><div class="stat-lbl">inkl.</div></div>
-    <div class="stat"><div class="stat-icon">🚗</div><div class="stat-val">Tiefgarage</div><div class="stat-lbl">gratis</div></div>
-  </div>
-  <div class="update-bar">🕐 Zuletzt aktualisiert: 18. Mai 2026 · Preis: ca. 620 € inkl. Frühstück (eigene Recherche)</div>
-  <div class="price-row"><span class="price-big">620 €</span><span class="price-pp">gesamt · 2 Nächte · 77 €/Pers. · Frühstück inkl.</span></div>
-  <div class="highlight">💡 3-Sterne Hotel mit Küchenzeile & Frühstücksbuffet. Ettlingen nur 20 km – kürzeste Anfahrt für Ettlinger Teilnehmer.</div>
-  <div class="pro-con">
-    <div class="pro-box"><div class="box-title">✓ Vorteile</div>
-      <div class="item"><span class="dot">✦</span> Frühstück inklusive</div>
-      <div class="item"><span class="dot">✦</span> Küchenzeile in jedem Zimmer</div>
-      <div class="item"><span class="dot">✦</span> Barrierefrei, Tiefgarage gratis</div>
-      <div class="item"><span class="dot">✦</span> Heidelberg 18 km, Hockenheimring 12 km</div>
-      <div class="item"><span class="dot">✦</span> Ettlingen nur 20 km</div>
-    </div>
-    <div class="con-box"><div class="box-title">✗ Nachteile</div>
-      <div class="item"><span class="dot">✦</span> Separate Hotelzimmer, kein Gruppenhaus</div>
-      <div class="item"><span class="dot">✦</span> Hellhörigkeit / Straßenlärm</div>
-      <div class="item"><span class="dot">✦</span> Kein Garten, kein Grill</div>
-      <div class="item"><span class="dot">✦</span> Kein Service nach 21 Uhr</div>
-    </div>
-  </div>
-  <div class="reviews">
-    <div class="rbox-pos"><div class="rbox-title">👍 Gäste loben</div>
-      <div class="ri"><span>✦</span> Frühstücksbuffet „ausgezeichnet"</div>
-      <div class="ri"><span>✦</span> Zimmer größer als erwartet</div>
-      <div class="ri"><span>✦</span> Personal sehr freundlich</div>
-    </div>
-    <div class="rbox-neg"><div class="rbox-title">👎 Gäste bemängeln</div>
-      <div class="ri"><span>✦</span> Straßenlärm häufig kritisiert</div>
-      <div class="ri"><span>✦</span> Kein Service nach 21 Uhr</div>
-    </div>
-  </div>
-  <div class="tags-row">
-    <span class="tag tg">Frühstück inkl.</span><span class="tag tg">Küchenzeile</span><span class="tag tg">Barrierefrei ♿</span><span class="tag tg">Tiefgarage gratis</span><span class="tag tg">Heidelberg 18 km</span><span class="tag tg">Ettlingen 20 km</span><span class="tag tr">Separate Zimmer</span><span class="tag tr">Kein Grill</span><span class="tag tn">3★ Hotel</span>
-  </div>
-  <div class="anfahrt"><div class="anfahrt-lbl">🚗 Anfahrt</div>
-    <div class="ar"><div class="adot" style="background:#378ADD;"></div><div class="acity">Duisburg</div><div class="atrack"><div class="abar" style="width:100%;background:#378ADD;"></div></div><div class="akm">380 km</div><div class="atime">ca. 3:30 h</div></div>
-    <div class="ar"><div class="adot" style="background:#1D9E75;"></div><div class="acity">Marburg</div><div class="atrack"><div class="abar" style="width:58%;background:#1D9E75;"></div></div><div class="akm">220 km</div><div class="atime">ca. 2:15 h</div></div>
-    <div class="ar"><div class="adot" style="background:#D85A30;"></div><div class="acity">Ettlingen</div><div class="atrack"><div class="abar" style="width:5%;background:#D85A30;"></div></div><div class="akm">20 km</div><div class="atime">ca. 0:20 h</div></div>
-    <div class="ar"><div class="adot" style="background:#BA7517;"></div><div class="acity">Kaufbeuren</div><div class="atrack"><div class="abar" style="width:63%;background:#BA7517;"></div></div><div class="akm">240 km</div><div class="atime">ca. 2:30 h</div></div>
-  </div>
-</div>
-
-<!-- ⑤ 4 STERNE FERIENHAUS HÜNFELDEN -->
-<div class="card separat">
-  <div class="card-top">
-    <div class="num">5</div>
-    <div class="card-title-area">
-      <div class="card-name">4★ Ferienhaus mit 2 sep. Ferienwohnungen</div>
-      <div class="card-loc">📍 Hünfelden · Hessen · 5 km zu Limburg · 35 km zu Wiesbaden</div>
-      <span class="typ-badge s">🚪 2 separate Wohnungen</span>
-    </div>
-    <div class="card-right">
-      <div class="rating"><div class="rating-num">4,82</div><div class="rating-lbl">34 Bew. ★</div></div>
-      <a class="book-btn" href="https://www.airbnb.de/rooms/2258217" target="_blank">Buchen →</a>
-    </div>
-  </div>
-  <div class="stats">
-    <div class="stat"><div class="stat-icon">👥</div><div class="stat-val">bis 16</div><div class="stat-lbl">Pers.</div></div>
-    <div class="stat"><div class="stat-icon">🛏️</div><div class="stat-val">4 Zi.</div><div class="stat-lbl">Schlaf</div></div>
-    <div class="stat"><div class="stat-icon">🚿</div><div class="stat-val">1,5 Bäder</div><div class="stat-lbl">Bad</div></div>
-    <div class="stat"><div class="stat-icon">📐</div><div class="stat-val">130 m²</div><div class="stat-lbl">OG-Whg.</div></div>
-    <div class="stat"><div class="stat-icon">🔥</div><div class="stat-val">Kaminofen</div><div class="stat-lbl">inkl.</div></div>
-  </div>
-  <div class="update-bar">🕐 Zuletzt aktualisiert: 18. Mai 2026 · Preis: bitte anfragen (noch nicht ermittelt)</div>
-  <div class="price-row"><span class="price-big">Preis anfragen</span><span class="price-pp">· 2 Wohnungen für je bis zu 10 Pers.</span></div>
-  <div class="highlight">💡 4-Sterne Anlage mit 2 großen Wohnungen – OG-Wohnung 130 m² mit Kaminofen, Balkon Südseite, 3 Grills im Garten, Trampolin & Tischtennisplatte. Limburg 5 km, Rheingau & Wiesbaden 35 km.</div>
-  <div class="pro-con">
-    <div class="pro-box"><div class="box-title">✓ Vorteile</div>
-      <div class="item"><span class="dot">✦</span> 4-Sterne Klassifizierung, sehr hochwertig</div>
-      <div class="item"><span class="dot">✦</span> 4,82★ Airbnb – top bewertet</div>
-      <div class="item"><span class="dot">✦</span> Kaminofen, Balkon Südseite, Lounge</div>
-      <div class="item"><span class="dot">✦</span> 3 Grills, Trampolin, Tischtennisplatte im Garten</div>
-      <div class="item"><span class="dot">✦</span> Exklusive Küche, 2 Kühlschränke</div>
-      <div class="item"><span class="dot">✦</span> Eigenständiger Check-in rund um die Uhr</div>
-    </div>
-    <div class="con-box"><div class="box-title">✗ Nachteile</div>
-      <div class="item"><span class="dot">✦</span> 2 separate Wohnungen – nicht ganz gemeinsam</div>
-      <div class="item"><span class="dot">✦</span> Nur 1,5 Badezimmer in OG-Wohnung</div>
-      <div class="item"><span class="dot">✦</span> Preis noch nicht ermittelt</div>
-      <div class="item"><span class="dot">✦</span> Limburg/Lahn – eher Laahn-Region als Mosel</div>
-    </div>
-  </div>
-  <div class="reviews">
-    <div class="rbox-pos"><div class="rbox-title">👍 Gäste loben</div>
-      <div class="ri"><span>✦</span> Gastgeberin Marina sehr engagiert</div>
-      <div class="ri"><span>✦</span> Ausstattung gehobener Standard, sehr sauber</div>
-      <div class="ri"><span>✦</span> Garten mit vielen Freizeitmöglichkeiten</div>
-    </div>
-    <div class="rbox-neg"><div class="rbox-title">👎 Gäste bemängeln</div>
-      <div class="ri"><span>✦</span> 2 Wohnungen – Gruppe aufgeteilt</div>
-      <div class="ri"><span>✦</span> Noch wenige Bewertungen (34)</div>
-    </div>
-  </div>
-  <div class="tags-row">
-    <span class="tag tg">4★ Klassifizierung</span><span class="tag tg">Kaminofen</span><span class="tag tg">Balkon Südseite</span><span class="tag tg">3 Grills</span><span class="tag tg">Trampolin</span><span class="tag tg">Tischtennis</span><span class="tag tg">Limburg 5 km</span><span class="tag tg">Wiesbaden 35 km</span><span class="tag tr">2 sep. Wohnungen</span><span class="tag tn">Preis anfragen</span>
-  </div>
-  <div class="anfahrt"><div class="anfahrt-lbl">🚗 Anfahrt</div>
-    <div class="ar"><div class="adot" style="background:#378ADD;"></div><div class="acity">Duisburg</div><div class="atrack"><div class="abar" style="width:58%;background:#378ADD;"></div></div><div class="akm">235 km</div><div class="atime">ca. 2:30 h</div></div>
-    <div class="ar"><div class="adot" style="background:#1D9E75;"></div><div class="acity">Marburg</div><div class="atrack"><div class="abar" style="width:18%;background:#1D9E75;"></div></div><div class="akm">75 km</div><div class="atime">ca. 1:00 h</div></div>
-    <div class="ar"><div class="adot" style="background:#D85A30;"></div><div class="acity">Ettlingen</div><div class="atrack"><div class="abar" style="width:68%;background:#D85A30;"></div></div><div class="akm">275 km</div><div class="atime">ca. 2:45 h</div></div>
-    <div class="ar"><div class="adot" style="background:#BA7517;"></div><div class="acity">Kaufbeuren</div><div class="atrack"><div class="abar" style="width:100%;background:#BA7517;"></div></div><div class="akm">400 km</div><div class="atime">ca. 3:45 h</div></div>
-  </div>
-</div>
-
-<!-- ⑥ BOPPARDER HAMM -->
-<div class="card separat">
-  <div class="card-top">
-    <div class="num">6</div>
-    <div class="card-title-area">
-      <div class="card-name">Ferienwohnungen Bopparder Hamm</div>
-      <div class="card-loc">📍 Boppard · UNESCO-Welterbe Mittelrheintal · 20 km zu Koblenz</div>
-      <span class="typ-badge s">🚪 2 separate Wohnungen</span>
-    </div>
-    <div class="card-right">
-      <div class="rating"><div class="rating-num">k.A.</div><div class="rating-lbl">Booking</div></div>
-      <a class="book-btn" href="https://www.booking.com/hotel/de/ferienwohnungen-bopparder-hamm.de.html" target="_blank">Buchen →</a>
-    </div>
-  </div>
-  <div class="stats">
-    <div class="stat"><div class="stat-icon">👥</div><div class="stat-val">8</div><div class="stat-lbl">Pers.</div></div>
-    <div class="stat"><div class="stat-icon">🛏️</div><div class="stat-val">4 Zi.</div><div class="stat-lbl">Schlaf</div></div>
-    <div class="stat"><div class="stat-icon">🏠</div><div class="stat-val">2 Whg.</div><div class="stat-lbl">sep.</div></div>
-    <div class="stat"><div class="stat-icon">🌊</div><div class="stat-val">Rhein</div><div class="stat-lbl">blick</div></div>
-    <div class="stat"><div class="stat-icon">🍷</div><div class="stat-val">Weinbistro</div><div class="stat-lbl">vor Ort</div></div>
-  </div>
-  <div class="update-bar">🕐 Zuletzt aktualisiert: 18. Mai 2026 · Preis: ca. 760 € (eigene Recherche)</div>
-  <div class="price-row"><span class="price-big">760 €</span><span class="price-pp">gesamt · 2 Nächte · 95 €/Pers. · 2 Whg. à 4 Pers.</span></div>
-  <div class="highlight">💡 UNESCO-Welterbe Mittelrheintal direkt vor der Tür – Rheinblick, Weinberge Bopparder Hamm, Sesselbahn 850 m, Weinbistro vor Ort.</div>
-  <div class="pro-con">
-    <div class="pro-box"><div class="box-title">✓ Vorteile</div>
-      <div class="item"><span class="dot">✦</span> UNESCO-Welterbe Traumlage</div>
-      <div class="item"><span class="dot">✦</span> Rheinblick & Weinberge direkt</div>
-      <div class="item"><span class="dot">✦</span> Sesselbahn Vierseenblick 850 m</div>
-      <div class="item"><span class="dot">✦</span> Weinbistro mit Weinproben vor Ort</div>
-      <div class="item"><span class="dot">✦</span> Eigener Parkplatz, Gästekarte inkl.</div>
-    </div>
-    <div class="con-box"><div class="box-title">✗ Nachteile</div>
-      <div class="item"><span class="dot">✦</span> 2 separate Wohnungen</div>
-      <div class="item"><span class="dot">✦</span> Teuerste Unterkunft (95 €/Pers.)</div>
-      <div class="item"><span class="dot">✦</span> Bahnlärm durch Rheinstrecke möglich</div>
-      <div class="item"><span class="dot">✦</span> Supermarkt 2 km, Auto empfohlen</div>
-    </div>
-  </div>
-  <div class="reviews">
-    <div class="rbox-pos"><div class="rbox-title">👍 Gäste loben</div>
-      <div class="ri"><span>✦</span> Rheinblick ausnahmslos begeistert</div>
-      <div class="ri"><span>✦</span> Wanderwege direkt ab Unterkunft</div>
-      <div class="ri"><span>✦</span> Weinbistro & lokale Weine sehr beliebt</div>
-    </div>
-    <div class="rbox-neg"><div class="rbox-title">👎 Gäste bemängeln</div>
-      <div class="ri"><span>✦</span> Bahnlärm durch Rheinstrecke</div>
-      <div class="ri"><span>✦</span> Einkauf nur mit Auto erreichbar</div>
-    </div>
-  </div>
-  <div class="tags-row">
-    <span class="tag tg">UNESCO-Welterbe 🏛️</span><span class="tag tg">Rheinblick</span><span class="tag tg">Sesselbahn 850 m</span><span class="tag tg">Weinbistro vor Ort</span><span class="tag tg">Gästekarte inkl.</span><span class="tag tg">Eigener Parkplatz</span><span class="tag tg">Koblenz 20 km</span><span class="tag tr">2 sep. Whg.</span><span class="tag tr">Bahnlärm möglich</span><span class="tag tn">Haustiere – anfragen</span>
-  </div>
-  <div class="anfahrt"><div class="anfahrt-lbl">🚗 Anfahrt</div>
-    <div class="ar"><div class="adot" style="background:#378ADD;"></div><div class="acity">Duisburg</div><div class="atrack"><div class="abar" style="width:42%;background:#378ADD;"></div></div><div class="akm">170 km</div><div class="atime">ca. 1:50 h</div></div>
-    <div class="ar"><div class="adot" style="background:#1D9E75;"></div><div class="acity">Marburg</div><div class="atrack"><div class="abar" style="width:28%;background:#1D9E75;"></div></div><div class="akm">110 km</div><div class="atime">ca. 1:20 h</div></div>
-    <div class="ar"><div class="adot" style="background:#D85A30;"></div><div class="acity">Ettlingen</div><div class="atrack"><div class="abar" style="width:68%;background:#D85A30;"></div></div><div class="akm">275 km</div><div class="atime">ca. 3:00 h</div></div>
-    <div class="ar"><div class="adot" style="background:#BA7517;"></div><div class="acity">Kaufbeuren</div><div class="atrack"><div class="abar" style="width:100%;background:#BA7517;"></div></div><div class="akm">520 km</div><div class="atime">ca. 5:00 h</div></div>
-  </div>
-</div>
-
-<!-- ⑦ DEIN HAUS AM RHEIN KOBLENZ -->
-<div class="card separat">
-  <div class="card-top">
-    <div class="num">7</div>
-    <div class="card-title-area">
-      <div class="card-name">Dein Haus am Rhein – Koblenz</div>
-      <div class="card-loc">📍 Koblenz · Rheinland-Pfalz · Rheinblick · Anleger 150 m</div>
-      <span class="typ-badge s">🚪 Separate Wohnungen (3 Whg.)</span>
-    </div>
-    <div class="card-right">
-      <div class="rating"><div class="rating-num">8,4</div><div class="rating-lbl">Booking</div></div>
-      <a class="book-btn" href="https://www.booking.com/hotel/de/dein-haus-am-rhein.de.html" target="_blank">Buchen →</a>
-    </div>
-  </div>
-  <div class="stats">
-    <div class="stat"><div class="stat-icon">👥</div><div class="stat-val">bis 14</div><div class="stat-lbl">Pers.</div></div>
-    <div class="stat"><div class="stat-icon">🛏️</div><div class="stat-val">3 Whg.</div><div class="stat-lbl">Wohnungen</div></div>
-    <div class="stat"><div class="stat-icon">🌊</div><div class="stat-val">Rhein</div><div class="stat-lbl">blick</div></div>
-    <div class="stat"><div class="stat-icon">🚢</div><div class="stat-val">150 m</div><div class="stat-lbl">Schiffsanleger</div></div>
-    <div class="stat"><div class="stat-icon">🏚️</div><div class="stat-val">Fachwerk</div><div class="stat-lbl">Historisch</div></div>
-  </div>
-  <div class="update-bar">🕐 Zuletzt aktualisiert: 18. Mai 2026 · Preis: ca. 860 € (eigene Recherche)</div>
-  <div class="price-row"><span class="price-big">860 €</span><span class="price-pp">gesamt · 2 Nächte · 107 €/Pers. · 3 separate Wohnungen</span></div>
-  <div class="highlight">💡 Historisches Fachwerkhaus mit imponierendem Rheinblick – ruhige Lage, nur 150 m zum Schiffsanleger und per Spaziergang ins Koblenzer Zentrum. Bettwäsche, Handtücher & WLAN inklusive.</div>
-  <div class="pro-con">
-    <div class="pro-box"><div class="box-title">✓ Vorteile</div>
-      <div class="item"><span class="dot">✦</span> Historisches Fachwerkhaus mit Rheinblick</div>
-      <div class="item"><span class="dot">✦</span> Schiffsanleger 150 m – Ausflüge per Schiff</div>
-      <div class="item"><span class="dot">✦</span> Koblenz Zentrum per Spaziergang erreichbar</div>
-      <div class="item"><span class="dot">✦</span> Bettwäsche, Handtücher & WLAN inkl.</div>
-      <div class="item"><span class="dot">✦</span> Mehrere Parkplätze direkt am Haus</div>
-      <div class="item"><span class="dot">✦</span> Deutsches Eck & Festung Ehrenbreitstein nah</div>
-    </div>
-    <div class="con-box"><div class="box-title">✗ Nachteile</div>
-      <div class="item"><span class="dot">✦</span> 3 separate Wohnungen – Gruppe aufgeteilt</div>
-      <div class="item"><span class="dot">✦</span> Teuerste Unterkunft (107 €/Pers.)</div>
-      <div class="item"><span class="dot">✦</span> Haustierregelung unklar</div>
-      <div class="item"><span class="dot">✦</span> An Rhein in Flammen / Feiertagen andere Preise</div>
-    </div>
-  </div>
-  <div class="reviews">
-    <div class="rbox-pos"><div class="rbox-title">👍 Gäste loben</div>
-      <div class="ri"><span>✦</span> „Vermieter sehr zuvorkommend, Gegend herrlich"</div>
-      <div class="ri"><span>✦</span> Loft-Apartment gemütlich & ansprechend eingerichtet</div>
-      <div class="ri"><span>✦</span> 2 Parkplätze direkt vor der Tür</div>
-    </div>
-    <div class="rbox-neg"><div class="rbox-title">👎 Gäste bemängeln</div>
-      <div class="ri"><span>✦</span> Separate Wohnungen – keine gemeinsame Unterkunft</div>
-      <div class="ri"><span>✦</span> Preis höher als Alternativen</div>
-    </div>
-  </div>
-  <div class="tags-row">
-    <span class="tag tg">Fachwerkhaus</span><span class="tag tg">Rheinblick</span><span class="tag tg">Schiffsanleger 150 m</span><span class="tag tg">Koblenz Zentrum</span><span class="tag tg">Bettwäsche inkl.</span><span class="tag tg">Handtücher inkl.</span><span class="tag tg">WLAN inkl.</span><span class="tag tg">Gratis Parken</span><span class="tag tg">Deutsches Eck nah</span><span class="tag tr">3 sep. Wohnungen</span><span class="tag tn">Haustiere – anfragen</span>
-  </div>
-  <div class="anfahrt"><div class="anfahrt-lbl">🚗 Anfahrt</div>
-    <div class="ar"><div class="adot" style="background:#378ADD;"></div><div class="acity">Duisburg</div><div class="atrack"><div class="abar" style="width:40%;background:#378ADD;"></div></div><div class="akm">160 km</div><div class="atime">ca. 1:45 h</div></div>
-    <div class="ar"><div class="adot" style="background:#1D9E75;"></div><div class="acity">Marburg</div><div class="atrack"><div class="abar" style="width:26%;background:#1D9E75;"></div></div><div class="akm">105 km</div><div class="atime">ca. 1:15 h</div></div>
-    <div class="ar"><div class="adot" style="background:#D85A30;"></div><div class="acity">Ettlingen</div><div class="atrack"><div class="abar" style="width:65%;background:#D85A30;"></div></div><div class="akm">260 km</div><div class="atime">ca. 2:45 h</div></div>
-    <div class="ar"><div class="adot" style="background:#BA7517;"></div><div class="acity">Kaufbeuren</div><div class="atrack"><div class="abar" style="width:100%;background:#BA7517;"></div></div><div class="akm">500 km</div><div class="atime">ca. 4:45 h</div></div>
-  </div>
-</div>
-
-<!-- ⑧ FERIENHAUS WEINGUT HALLENBACH -->
-<div class="card gemeinsam">
-  <div class="card-top">
-    <div class="num">8</div>
-    <div class="card-title-area">
-      <div class="card-name">Ferienhaus Weingut Hallenbach</div>
-      <div class="card-loc">📍 Zell (Mosel) · Mittelmosel · direkt an der Moselpromenade</div>
-      <span class="typ-badge g">🏠 Ganzes Ferienhaus – gemeinsam</span>
-    </div>
-    <div class="card-right">
-      <div class="rating"><div class="rating-num">9,5</div><div class="rating-lbl">Booking</div></div>
-      <a class="book-btn" href="https://www.booking.com/Share-80V1zJ" target="_blank">Buchen →</a>
-    </div>
-  </div>
-  <div class="stats">
-    <div class="stat"><div class="stat-icon">👥</div><div class="stat-val">8</div><div class="stat-lbl">Pers.</div></div>
-    <div class="stat"><div class="stat-icon">🛏️</div><div class="stat-val">4 Zi.</div><div class="stat-lbl">Schlaf</div></div>
-    <div class="stat"><div class="stat-icon">🚿</div><div class="stat-val">2 Bäder</div><div class="stat-lbl">Bad</div></div>
-    <div class="stat"><div class="stat-icon">📐</div><div class="stat-val">120 m²</div><div class="stat-lbl">Fläche</div></div>
-    <div class="stat"><div class="stat-icon">🌊</div><div class="stat-val">Mosel</div><div class="stat-lbl">Weingut</div></div>
-  </div>
-  <div class="update-bar">🕐 Zuletzt aktualisiert: 18. Mai 2026 · Preis: ca. 648 € inkl. Steuern (Booking.com · 20% Neuunterkunft-Rabatt) · kostenlose Stornierung bis 6. Sept. möglich (dann 720 €)</div>
-  <div class="price-row"><span class="price-big">648 €</span><span class="price-pp">gesamt · 2 Nächte · 81 €/Pers. · inkl. Steuern & Gebühren</span></div>
-  <div class="highlight">💡 Ganzes Ferienhaus (120 m²) direkt an der Moselpromenade Zell – 4 Schlafzimmer, 2 Bäder, Terrasse mit Gartenblick, eigenes Weingut mit Ausschank nebenan. Kostenlose Stornierung bis 6. September möglich!</div>
-  <div class="pro-con">
-    <div class="pro-box"><div class="box-title">✓ Vorteile</div>
-      <div class="item"><span class="dot">✦</span> Ganzes Haus – alle 8 Personen gemeinsam</div>
-      <div class="item"><span class="dot">✦</span> Direkt an der Moselpromenade – Traumlage</div>
-      <div class="item"><span class="dot">✦</span> 4 Schlafzimmer & 2 Bäder – komfortabel</div>
-      <div class="item"><span class="dot">✦</span> Eigenes Weingut mit Ausschank & Weinproben</div>
-      <div class="item"><span class="dot">✦</span> Terrasse, eigene Küche, Waschmaschine, WLAN</div>
-      <div class="item"><span class="dot">✦</span> Kostenlose Stornierung bis 6. Sept. (Option 720 €)</div>
-      <div class="item"><span class="dot">✦</span> 20% Neuunterkunft-Rabatt – 648 statt 810 €</div>
-    </div>
-    <div class="con-box"><div class="box-title">✗ Nachteile</div>
-      <div class="item"><span class="dot">✦</span> Neue Unterkunft – noch wenige Bewertungen</div>
-      <div class="item"><span class="dot">✦</span> Nur 1 Doppelbett angegeben – Schlafplätze prüfen</div>
-      <div class="item"><span class="dot">✦</span> Parken öffentlich – nicht reservierbar</div>
-      <div class="item"><span class="dot">✦</span> Nicht kostenlos stornierbar bei günstigster Option</div>
-    </div>
-  </div>
-  <div class="reviews">
-    <div class="rbox-pos"><div class="rbox-title">👍 Gäste loben (Weingut Hallenbach allg.)</div>
-      <div class="ri"><span>✦</span> „Wie immer alles bestens bei Familie Hallenbach"</div>
-      <div class="ri"><span>✦</span> Moselblick: „wunderschön" – mehrfach erwähnt</div>
-      <div class="ri"><span>✦</span> Sehr sauber, modern, herzliche Gastgeber</div>
-    </div>
-    <div class="rbox-neg"><div class="rbox-title">👎 Zu beachten</div>
-      <div class="ri"><span>✦</span> Neue Unterkunft – Erfahrungswerte noch begrenzt</div>
-      <div class="ri"><span>✦</span> Schlafplätze für 8 Pers. vorher konkret anfragen</div>
-    </div>
-  </div>
-  <div class="tags-row">
-    <span class="tag tg">Ganzes Haus 🏠</span><span class="tag tg">Moselpromenade direkt</span><span class="tag tg">4 Schlafzimmer</span><span class="tag tg">2 Bäder</span><span class="tag tg">120 m²</span><span class="tag tg">Terrasse</span><span class="tag tg">Eigene Küche</span><span class="tag tg">Waschmaschine</span><span class="tag tg">WLAN inkl.</span><span class="tag tg">Eigenes Weingut</span><span class="tag tg">Weinproben vor Ort</span><span class="tag tg">Mosel-Radweg nah</span><span class="tag tg">20% Rabatt ✓</span><span class="tag tn">Parken öffentlich</span><span class="tag tn">Neue Unterkunft</span>
-  </div>
-  <div class="anfahrt"><div class="anfahrt-lbl">🚗 Anfahrt</div>
-    <div class="ar"><div class="adot" style="background:#378ADD;"></div><div class="acity">Duisburg</div><div class="atrack"><div class="abar" style="width:54%;background:#378ADD;"></div></div><div class="akm">215 km</div><div class="atime">ca. 2:20 h</div></div>
-    <div class="ar"><div class="adot" style="background:#1D9E75;"></div><div class="acity">Marburg</div><div class="atrack"><div class="abar" style="width:34%;background:#1D9E75;"></div></div><div class="akm">135 km</div><div class="atime">ca. 1:40 h</div></div>
-    <div class="ar"><div class="adot" style="background:#D85A30;"></div><div class="acity">Ettlingen</div><div class="atrack"><div class="abar" style="width:60%;background:#D85A30;"></div></div><div class="akm">240 km</div><div class="atime">ca. 2:30 h</div></div>
-    <div class="ar"><div class="adot" style="background:#BA7517;"></div><div class="acity">Kaufbeuren</div><div class="atrack"><div class="abar" style="width:100%;background:#BA7517;"></div></div><div class="akm">490 km</div><div class="atime">ca. 4:45 h</div></div>
-  </div>
-</div>
-
-</main>
-
-<footer class="site-footer">
-  Familientreffen 2026 · 11.–13. September · 8 Personen · Stand: 19.05.2026<br>
-  <span style="margin-top:4px;display:inline-block;">
-    <a href="https://www.booking.com/hotel/de/deluxe-flat-ps4-parken-netflix-zentral.de.html" target="_blank">① Bendorf</a> ·
-    <a href="https://t1p.de/507s4" target="_blank">② Zerf</a> ·
-    <a href="https://www.booking.com/Share-S9b2al" target="_blank">③ Polch</a> ·
-    <a href="https://www.booking.com/hotel/de/ifen.de.html" target="_blank">④ Wiesloch</a> ·
-    <a href="https://www.airbnb.de/rooms/2258217" target="_blank">⑤ Hünfelden</a> ·
-    <a href="https://www.booking.com/hotel/de/ferienwohnungen-bopparder-hamm.de.html" target="_blank">⑥ Boppard</a> ·
-    <a href="https://www.booking.com/hotel/de/dein-haus-am-rhein.de.html" target="_blank">⑦ Koblenz</a> ·
-    <a href="https://www.booking.com/Share-80V1zJ" target="_blank">⑧ Zell/Mosel</a>
-  </span>
-</footer>
-
-</body>
-</html>
+</body></html>
